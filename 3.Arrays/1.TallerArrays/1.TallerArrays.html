@@ -60,8 +60,18 @@
 
 
 
+    // 4. Escribe un programa que utilice el array secuencia para imprimir en la consola la secuencia original y su versión invertida, alternando en cada paso del bucle.
+
+    // let secuencia = ['O', '*', 'O', '*', 'O', '*', 'O', '*'];
+    let secuencia = ['O', '*', 'O', '*', 'O', '*', 'O', '*'];
+    for (let i = 0; i < secuencia.length; i += 1) {
+      (i % 2 == 0 ? console.log(secuencia) : console.log(secuencia.slice().reverse()))
+    }
+
+
+
     /*
-    4.	Del siguiente arreglo ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'] mostrar en el navegador en cual posición se encuentran las frutas y en cual posición las verduras dentro de dicho array.
+    5.	Del siguiente arreglo ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'] mostrar en el navegador en cual posición se encuentran las frutas y en cual posición las verduras dentro de dicho array.
     */
     //Dejare este ejercicio para mas adelante cuando tenga mas conocimientos y herramientas sobre JS
 
