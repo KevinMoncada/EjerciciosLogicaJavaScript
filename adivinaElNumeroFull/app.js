@@ -1,10 +1,18 @@
+let numerosSorteados = [];
+let i = 1;
+
+
 function generarNumero() {
     let numeroAleatorio = parseInt((Math.random() * 100) + 1);
-    return (numeroAleatorio);
+    if (numerosSorteados.includes(numeroAleatorio)) {
+        return generarNumero()
+    } else {
+        numerosSorteados.push(numeroAleatorio);
+        return (numeroAleatorio);
+    }
 }
-generarNumero();
 let numeroAleatorioGenerado = generarNumero();
-let i = 1;
+
 
 let mensajeSalida = document.getElementById(`textoDinamico`);
 function condicionesIniciales() {
@@ -12,23 +20,8 @@ function condicionesIniciales() {
 }
 condicionesIniciales();
 
-
-
-
-
-function reiniciar() {
-    condicionesIniciales();
-    numeroAleatorioGenerado = generarNumero();
-    document.getElementById(`intentar`).removeAttribute(`disabled`);
-    mensajeSalida.innerHTML = `Ingresa un número entero entre 1 y 100`
-    i = 1;
-}
-
-
-
 function comparacionNumeros() {
     let numeroIngresadoUsuario = document.getElementById(`numeroIngresado`).value;
-    console.log(numeroIngresadoUsuario);
     switch (true) {
         case (numeroIngresadoUsuario > 100 || numeroIngresadoUsuario < 1):
             mensajeSalida.innerHTML = `ERROR!! Ingrese un número valido #Intentos:${i}`;
@@ -48,6 +41,14 @@ function comparacionNumeros() {
     }
     i += 1;
     numeroIngresadoUsuario = document.getElementById(`numeroIngresado`).value = ''
+}
+
+function reiniciar() {
+    condicionesIniciales();
+    numeroAleatorioGenerado = generarNumero();
+    document.getElementById(`intentar`).removeAttribute(`disabled`);
+    mensajeSalida.innerHTML = `Ingresa un número entero entre 1 y 100`
+    i = 1;
 }
 
 
