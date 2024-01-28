@@ -54,3 +54,16 @@ function reiniciar() {
 
 document.getElementById(`intentar`).addEventListener(`click`, comparacionNumeros);
 document.getElementById(`reiniciar`).addEventListener(`click`, reiniciar)
+
+
+
+
+
+
+
+
+
+
+
+
+let nombre = 'Juan';
