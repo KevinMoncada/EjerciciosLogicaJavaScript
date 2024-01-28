@@ -1,69 +1,70 @@
-let numerosSorteados = [];
-let i = 1;
+let dynamicText = document.getElementById(`textoDinamico`);
+let inputNumber = document.getElementById(`numeroIngresado`);
+let tryButton = document.getElementById(`intentar`);
+let restartButton = document.getElementById(`reiniciar`);
+let maxAttempts = 100;
+let secretNumber;
+let attemptsCounter = 0;
+let drawnNumbers = [];
 
 
-function generarNumero() {
-    let numeroAleatorio = parseInt((Math.random() * 100) + 1);
-    if (numerosSorteados.includes(numeroAleatorio)) {
-        return generarNumero()
+function generateSecretNumber() {
+    if (drawnNumbers.length == maxAttempts) {
+        dynamicText.innerHTML = `Ya se sortearon Todos los números posibles!! :(`;
+        tryButton.setAttribute(`disabled`, true);
+        inputNumber.setAttribute('disabled', true);
     } else {
-        numerosSorteados.push(numeroAleatorio);
-        return (numeroAleatorio);
+        secretNumber = Math.floor(Math.random() * maxAttempts) + 1;;
+        if (drawnNumbers.includes(secretNumber)) {
+            return generateSecretNumber()
+        } else {
+            drawnNumbers.push(secretNumber);
+            return secretNumber;
+        }
     }
 }
-let numeroAleatorioGenerado = generarNumero();
 
-
-let mensajeSalida = document.getElementById(`textoDinamico`);
-function condicionesIniciales() {
-    mensajeSalida.innerHTML = `Ingresa un número entero entre 1 y 100`
+function startConditions() {
+    dynamicText.innerHTML = `Ingresa un Número entero entre 1 y 100`;
+    inputNumber.value = '';
+    tryButton.removeAttribute('disabled');
+    restartButton.setAttribute('disabled', true)
+    inputNumber.removeAttribute('disabled')
+    attemptsCounter = 0;
+    generateSecretNumber();
+    console.log(secretNumber);
+    console.log(drawnNumbers);
 }
-condicionesIniciales();
+startConditions();
 
-function comparacionNumeros() {
-    let numeroIngresadoUsuario = document.getElementById(`numeroIngresado`).value;
+
+//Start Event
+tryButton.addEventListener('click', process);
+function process() {
+    let evaluatedNumber = parseInt(inputNumber.value);
+    attemptsCounter += 1;
     switch (true) {
-        case (numeroIngresadoUsuario > 100 || numeroIngresadoUsuario < 1):
-            mensajeSalida.innerHTML = `ERROR!! Ingrese un número valido #Intentos:${i}`;
+        case (evaluatedNumber < 0 || evaluatedNumber > 100):
+            dynamicText.innerHTML = `El número ingresado no es valido, el rango establecido es entre 1 y 100 (Intentos: ${attemptsCounter})`;
             break;
-        case (numeroIngresadoUsuario == numeroAleatorioGenerado):
-            mensajeSalida.innerHTML = `Felicidades!! Adivinaste el número secreto (${numeroAleatorioGenerado}) #Intentos:${i}`;
-            document.getElementById(`reiniciar`).removeAttribute(`disabled`);
-            document.getElementById(`intentar`).setAttribute('disabled', true);
-            i = 1;
+        case (evaluatedNumber === secretNumber):
+            dynamicText.innerHTML = `Felicidades!! Adivinaste el Número Secreto ${evaluatedNumber} (Intentos: ${attemptsCounter})`;
+            tryButton.setAttribute(`disabled`, true);
+            restartButton.removeAttribute(`disabled`);
+            inputNumber.setAttribute('disabled', true);
             break;
-        case (numeroIngresadoUsuario > numeroAleatorioGenerado):
-            mensajeSalida.innerHTML = `ERROR!! El número ingresado es Menor #Intentos:${i}`;
+        case (evaluatedNumber > secretNumber):
+            dynamicText.innerHTML = `Error!! El número Secreto es Menor (Intentos: ${attemptsCounter})`;
             break;
-        case (numeroIngresadoUsuario < numeroAleatorioGenerado):
-            mensajeSalida.innerHTML = `ERROR!! El número ingresado es Mayor #Intentos:${i}`;
+        case (evaluatedNumber < secretNumber):
+            dynamicText.innerHTML = `Error!! El número Secreto es Mayor (Intentos: ${attemptsCounter})`;
             break;
     }
-    i += 1;
-    numeroIngresadoUsuario = document.getElementById(`numeroIngresado`).value = ''
+    inputNumber.value = ''
 }
 
-function reiniciar() {
-    condicionesIniciales();
-    numeroAleatorioGenerado = generarNumero();
-    document.getElementById(`intentar`).removeAttribute(`disabled`);
-    mensajeSalida.innerHTML = `Ingresa un número entero entre 1 y 100`
-    i = 1;
+//Re-start Event
+restartButton.addEventListener('click', restartGame)
+function restartGame() {
+    startConditions()
 }
-
-
-document.getElementById(`intentar`).addEventListener(`click`, comparacionNumeros);
-document.getElementById(`reiniciar`).addEventListener(`click`, reiniciar)
-
-
-
-
-
-
-
-
-
-
-
-
-let nombre = 'Juan';
