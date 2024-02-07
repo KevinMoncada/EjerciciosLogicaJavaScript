@@ -1,4 +1,4 @@
-let dynamicText = document.getElementById(`textoDinamico`);
+let dynamicText = document.getElementById('textoDinamico');
 let inputNumber = document.getElementById(`numeroIngresado`);
 let tryButton = document.getElementById(`intentar`);
 let restartButton = document.getElementById(`reiniciar`);

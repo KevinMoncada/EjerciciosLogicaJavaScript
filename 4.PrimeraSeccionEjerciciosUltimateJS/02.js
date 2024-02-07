@@ -2,11 +2,12 @@
 
 let arrayExample = [23, 92, 83, 54, 76];
 
-function getElementOfArrayByIndx(inputArray, index) {
+
+function getArrayElementByIndx(inputArray, index) {
     let element = inputArray[index];
-    return element
+    return element;
 }
 
-let result = getElementOfArrayByIndx(arrayExample, 2);
-console.log(result);
 
+let result = getArrayElementByIndx(arrayExample, 2)
+console.log(result);

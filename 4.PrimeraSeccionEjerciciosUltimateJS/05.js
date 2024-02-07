@@ -7,15 +7,17 @@ let users = [
     { id: 764, name: 'Roberto' },
 ]
 
-
-function toPairArray(arrayInput) {
-    let newArray = [];
-    for (let i = 0; i < arrayInput.length; i += 1) {
-        let newArrayElement = [arrayInput[i].id, arrayInput[i]];
-        newArray.push(newArrayElement);
+function objectsArrayToPairsArray(inputArray) {
+    let newPairsArray = [];
+    for (let i = 0; i < inputArray.length; i += 1) {
+        let elements = [inputArray[i].id, inputArray[i]];
+        newPairsArray.push(elements);
     }
-    return newArray;
+    return newPairsArray;
 }
 
-let result = toPairArray(users);
+let result = objectsArrayToPairsArray(users);
 console.log(result);
+
+
+

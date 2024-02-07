@@ -2,19 +2,18 @@
 
 let listOfNumbers = [-73, 13, -3, 16, 83, -6, 92, 34, 15, -25, 66];
 
-
-
-function getPositiveAndNegativeNumbersFromArray(inputArray) {
-    let positiveNumbers = 0;
-    let negativeNumbers = 0;
+function countAmmountOfPositiveAndNegativeNumbers(inputArray) {
+    let ammountOfPositiveNumbers = 0
+    let ammountOfNegativeNumbers = 0
     for (let i = 0; i < inputArray.length; i += 1) {
-        (inputArray[i] > 0) ? positiveNumbers += 1 : negativeNumbers += 1;
+        ((inputArray[i] > 0) ? ammountOfPositiveNumbers += 1 : ammountOfNegativeNumbers += 1);
     }
+
     return {
-        amountOfPositiveNumbers: positiveNumbers,
-        amountOfNegativeNumbers: negativeNumbers,
+        ammountOfPositiveNumbers: ammountOfPositiveNumbers,
+        ammountOfNegativeNumbers: ammountOfNegativeNumbers,
     }
 }
 
-let result = getPositiveAndNegativeNumbersFromArray(listOfNumbers);
+let result = countAmmountOfPositiveAndNegativeNumbers(listOfNumbers);
 console.log(result);

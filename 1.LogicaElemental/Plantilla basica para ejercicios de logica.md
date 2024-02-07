@@ -1,3 +1,4 @@
+```js
 //DECLARACION DE FUNCIONES
 //1.WORK-FLOW FUNCTION'S
 function print(textoenpantalla) {
@@ -26,3 +27,4 @@ function saltarLinea() {
 //LOOPS
 
 //INFO EN PANTALLA
+```

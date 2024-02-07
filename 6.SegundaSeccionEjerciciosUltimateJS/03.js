@@ -9,20 +9,23 @@ let literalObject = {
     }
 }
 
-// for (i in literalObject) {
-//     // console.log(i); //Nombre de la propiedad
-//     // console.log(literalObject[i]);  //Valor de la propiedad i
-//     console.log(`${i}: ${literalObject[i]}`) //Ambos juntos
-// }
 
-
-function getMethods(obj1) {
-    for (key in obj1) {
-        if (typeof (obj1[key]) == 'function') {
-            console.log(key)
+function getMethodsFromObject(object) {
+    let metodos = []
+    for (const key in object) {
+        console.log(`${key}: ${object[key]}`);
+        if (typeof object[key] == 'function') {
+            metodos.push(key)
         }
     }
+    return metodos;
 }
 
-let result = getMethods(literalObject);
+let result = getMethodsFromObject(literalObject);
 console.log(result);
+
+
+
+
+
+

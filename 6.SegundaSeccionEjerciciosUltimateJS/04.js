@@ -15,3 +15,4 @@ function propEvaluation(obj, prop) {
 }
 
 console.log(propEvaluation(literalObject, 'casa'))
+console.log(propEvaluation(literalObject, 'age'))

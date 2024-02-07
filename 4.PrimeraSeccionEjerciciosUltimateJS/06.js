@@ -6,16 +6,21 @@ let pairsArray = [
     [567, { id: 567, name: 'Ernesto' }],
     [987, { id: 987, name: 'Carlos' }],
     [764, { id: 764, name: 'Roberto' }],
-]
+];
 
 
-function pairArrayToObjectsArray(inputArray) {
-    let newArray = [];
+function pairsArrayToObjectsArray(inputArray) {
+    let newObjectsArray = [];
     for (let i = 0; i < inputArray.length; i += 1) {
-        let element = inputArray[i][1];
-        newArray.push(element)
+        let secondIndx = 1;
+        let element = inputArray[i][secondIndx];
+        newObjectsArray.push(element);
     }
-    return newArray
+    return newObjectsArray;
 }
-let result = pairArrayToObjectsArray(pairsArray);
-console.log(result)
+
+let result = pairsArrayToObjectsArray(pairsArray)
+console.log(result);
+
+
+
