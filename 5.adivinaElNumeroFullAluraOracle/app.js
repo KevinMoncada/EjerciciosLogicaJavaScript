@@ -14,7 +14,7 @@ function generateSecretNumber() {
         tryButton.setAttribute(`disabled`, true);
         inputNumber.setAttribute('disabled', true);
     } else {
-        secretNumber = Math.floor(Math.random() * maxAttempts) + 1;;
+        secretNumber = Math.floor(Math.random() * maxAttempts) + 1;
         if (drawnNumbers.includes(secretNumber)) {
             return generateSecretNumber()
         } else {

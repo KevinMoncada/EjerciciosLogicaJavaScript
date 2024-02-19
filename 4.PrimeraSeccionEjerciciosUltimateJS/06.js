@@ -9,18 +9,9 @@ let pairsArray = [
 ];
 
 
-function pairsArrayToObjectsArray(inputArray) {
-    let newObjectsArray = [];
-    for (let i = 0; i < inputArray.length; i += 1) {
-        let secondIndx = 1;
-        let element = inputArray[i][secondIndx];
-        newObjectsArray.push(element);
-    }
-    return newObjectsArray;
+function pairsArrayToObjectArray(inputArray) {
+    return inputArray.map((element) => element[1])
 }
 
-let result = pairsArrayToObjectsArray(pairsArray)
-console.log(result);
 
-
-
+console.log(pairsArrayToObjectArray(pairsArray));

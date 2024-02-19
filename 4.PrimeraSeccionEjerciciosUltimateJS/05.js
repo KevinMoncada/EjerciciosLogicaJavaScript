@@ -1,4 +1,11 @@
-// crear un algoritmo que tome un array de objetos y devuelva un array de pares, cada array de ese ultimo array debe tener un identificador y un objeto let exampleOfPairArray = [234, { id: 131, name: 'Nicolas' }];
+// crear una función que tome un array de objetos y devuelva un array de pares, cada array de ese ultimo array debe tener un identificador y un objeto, el id debe extraerse del propio objeto original, Ejemplo: 
+// let exampleOfPairArray = [
+//     [131, { id: 131, name: 'Nicolas' }],
+//     [567, { id: 567, name: 'Ernesto' }],
+//     [987, { id: 987, name: 'Carlos' }],
+//     [764, { id: 764, name: 'Roberto' }],
+// ];
+
 
 let users = [
     { id: 131, name: 'Nicolas' },
@@ -7,17 +14,12 @@ let users = [
     { id: 764, name: 'Roberto' },
 ]
 
-function objectsArrayToPairsArray(inputArray) {
-    let newPairsArray = [];
-    for (let i = 0; i < inputArray.length; i += 1) {
-        let elements = [inputArray[i].id, inputArray[i]];
-        newPairsArray.push(elements);
-    }
-    return newPairsArray;
+
+
+function toPairsArray(inputArray) {
+    let transform = inputArray.map((element) => [element.id, element]);
+    return transform
 }
 
-let result = objectsArrayToPairsArray(users);
+let result = toPairsArray(users);
 console.log(result);
-
-
-

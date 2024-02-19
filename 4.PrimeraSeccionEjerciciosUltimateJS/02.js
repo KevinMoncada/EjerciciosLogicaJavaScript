@@ -3,11 +3,9 @@
 let arrayExample = [23, 92, 83, 54, 76];
 
 
-function getArrayElementByIndx(inputArray, index) {
-    let element = inputArray[index];
-    return element;
+function getElementByIndx(inputArray, index) {
+    return inputArray[index]
 }
 
-
-let result = getArrayElementByIndx(arrayExample, 2)
+let result = getElementByIndx(arrayExample, 3)
 console.log(result);

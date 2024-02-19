@@ -1,16 +1,14 @@
-//Crear una clase User que me permita crear objetos con los datos de los usuarios (Nombre y Id), el Id debe generarse como numero aleatorio
+//Crear una clase User que me permita crear objetos con los datos de los usuarios (Nombre y Id)
 
 class User {
-    constructor(nombre, id) {
-        this.nombre = nombre;
-        this.id = id;
-    }
+  constructor(name, id) {
+    this.name = name;
+    this.id = id;
+  }
 }
 
-let user1 = new User('Jairo', 109364);
-let user2 = new User('Roberto', 145231);
-let user3 = new User('Alan', 876432);
+let user1 = new User('Juan', 9821234);
+let user2 = new User('Carlos', 856745);
+let user3 = new User('Ernesto', 4566323);
 
-console.log(user1, user2, user3)
-
-
+console.log(user1, user2, user3);

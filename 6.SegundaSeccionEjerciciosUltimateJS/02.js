@@ -7,23 +7,22 @@ let literalObject2 = { name: 'Juan', id: 2314, location: 'Colombia', };
 
 
 function compareObjects(obj1, obj2) {
-  let propertiesEqualValue = 0;
-  let propertiesWithDifferentValue = 0;
-  for (const key in obj1) {
-    if (obj1[key] === obj2[key]) {
-      propertiesEqualValue += 1;
+  let ammountOfEqualProps = 0;
+  let ammountOfUnequalProps = 0;
+  for (const prop in obj1) {
+    if (obj1[prop] === obj2[prop]) {
+      ammountOfEqualProps += 1;
     } else {
-      propertiesWithDifferentValue += 1;
+      ammountOfUnequalProps += 1;
     }
   }
-  if (propertiesWithDifferentValue == 0) {
+
+  if (Object.keys(obj1).length === ammountOfEqualProps) {
     return true;
-  }
-  if (propertiesWithDifferentValue != 0) {
+  } else {
     return false;
   }
 }
 
-
 let result = compareObjects(literalObject1, literalObject2);
-console.log(result)
+console.log(result);
