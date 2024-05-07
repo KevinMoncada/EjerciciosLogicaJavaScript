@@ -6,45 +6,34 @@ divide la distancia recorrida entre la cantidad de litros gastados. Imprime el v
 Por otro lado, si el carro usa alcohol como combustible, el mismo tanque de 40 litros hace un recorrido de 300 kilómetros. ¿Cuál es el la eficiencia del carro usando alcohol? 
  */
 
-//DECLARACION DE FUNCIONES
-//1.WORK-FLOW FUNCTION'S
-function saltarLinea() {
-  document.write('<br>');
-  document.write('<br>');
+//WORK-FLOW FUNCTION'S
+function print(text) {
+  document.write(text);
+  document.write('</br>');
 }
 
-function print(textoEnPantalla) {
-  document.write(textoEnPantalla);
-  document.write('<br>');
+function lineBreak() {
+  document.write('</br>');
+  document.write('</br>');
 }
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
-function calculeEficiencia(distanciaRecorrida, combustibleEmpleado) {
-  return (distanciaRecorrida / combustibleEmpleado);
+//
+function efficiency(distance, fuelUsed) {
+  return distance / fuelUsed;
 }
 
+const tankCapacity = 40;
+const gasolineAsFuel = 40;
+const distanceGasoline = 480;
+const alcoholAsFuel = 40;
+const distanceAlcohol = 300;
+
+let efficiencyUsingGasoline = efficiency(distanceGasoline, gasolineAsFuel);
+let efficiencyUsingAlcohol = efficiency(distanceAlcohol, alcoholAsFuel);
+
+//INFO ON SCREEN
+print(`<h2>Ejercicio Eficiencia Combustible</h2>`);
+print(`La eficiencia del vehiculo usando Gasolina como combustible es de: ${efficiencyUsingGasoline}Km/L`);
+print(`La eficiencia del vehiculo usando Alcohol como combustible es de: ${efficiencyUsingAlcohol}Km/L`);
 
 
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-const capacidadTanque = 40;
-const gasolinaEmpleada = 40;
-const distanciaRecorridaGasolina = 480;
-const alcoholEmpleado = 40;
-const distanciaRecorridaAlcohol = 300;
-
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-// - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -
-
-//3.VARIABLES FRUTO DE CALCULOS MATEMATICOS
-let eficienciaGasolina = calculeEficiencia(distanciaRecorridaGasolina, gasolinaEmpleada);
-let eficienciaAlcohol = calculeEficiencia(distanciaRecorridaAlcohol, alcoholEmpleado);
-
-//LOOPS
-// - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -
-
-
-//INFO EN PANTALLA
-document.write("<h3> Calculo Eficiencia </h3>");
-print(`La eficiencia usando gasolina es de: ${eficienciaGasolina} Km/L`);
-print(`La eficiencia usando alcohol es de: ${eficienciaAlcohol} Km/L`);

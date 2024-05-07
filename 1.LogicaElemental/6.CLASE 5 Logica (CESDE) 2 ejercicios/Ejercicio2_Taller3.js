@@ -5,71 +5,65 @@ Salario neto = Salario total que percibe el individuo           Salario Bruto = 
 
 //DECLARACION DE FUNCIONES
 //1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
+function print(text) {
+    document.write(text);
     document.write("<br>");
 }
 
-function saltarLinea() {
+function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+//
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
-function calculeSalarioNeto(salarioBruto, Bonificaciones, Deducciones) {
-    return (salarioBruto + Bonificaciones - Deducciones)
+function calculateNetSalary(grossSalary, bonus, deductions) {
+    return (grossSalary + bonus - deductions)
 }
 
+let higherSalary;
+let higherSalaryWorkerName;
 
+//Recolecta de datos trabajadores
+const firstWorkerName = prompt(`Ingrese su nombre`);
+const firstWorkerGrossSalary = parseFloat(prompt(`${firstWorkerName} Ingrese el valor de su salario Bruto`));
+const firstWorkerBonus = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`));
+const firstWorkerDeductions = parseFloat(prompt(`Ingrese el valor de sus Deducciones`));
 
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+const secondWorkerName = prompt(`Ingrese su nombre`);
+const secondWorkerGrossSalary = parseFloat(prompt(`${secondWorkerName} Ingrese el valor de su salario Bruto`));
+const secondWorkerBonus = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`));
+const secondWorkerDeductions = parseFloat(prompt(`Ingrese el valor de sus Deducciones`));
 
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-//TRABAJADOR 1
-const nombreTrabajador1 = prompt(`Ingrese su Nombre`);
-const salarioBruto1 = parseFloat(prompt(`Cual es su salario Bruto?`));
-const deducciones1 = parseFloat(prompt(`Ingrese el valor de sus Deducciones`))
-const bon1 = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`))
+//Calculos
+const firstWorkerNetSalary = calculateNetSalary(firstWorkerGrossSalary, firstWorkerBonus, firstWorkerDeductions);
+const secondWorkerNetSalary = calculateNetSalary(secondWorkerGrossSalary, secondWorkerBonus, secondWorkerDeductions);
 
-//TRABAJADOR 2
-const nombreTrabajador2 = prompt(`Ingrese su Nombre`);
-const salarioBruto2 = parseFloat(prompt(`Cual es su salario Bruto?`));
-const deducciones2 = parseFloat(prompt(`Ingrese el valor de sus Deducciones`))
-const bon2 = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`))
-
-//3.VARIABLES FRUTO DE CALCULOS MATEMATICOS
-let salarioNetoTrabajador1 = calculeSalarioNeto(salarioBruto1, bon1, deducciones1)
-let salarioNetoTrabajador2 = calculeSalarioNeto(salarioBruto2, bon2, deducciones2)
-
-
-
-//INFO EN PANTALLA
-print('<h2>Datos Trabajadores</h2>');
-print('<h4>Trabajador 1</h4>');
-print(` Nombre: ${nombreTrabajador1} <br>
-        Salario Bruto: ${salarioBruto1}$ <br>
-        Deducciones: ${deducciones1}$ <br>
-        Bonificaciones: ${bon1}$ <br>
-        Salario Neto: ${salarioNetoTrabajador1}$`);
-saltarLinea();
-
-print('<h4>Trabajador 2</h4>');
-print(` Nombre: ${nombreTrabajador2} <br>
-        Salario Bruto: ${salarioBruto2}$ <br>
-        Deducciones: ${deducciones2}$ <br>
-        Bonificaciones: ${bon2}$ <br>
-        Salario Neto: ${salarioNetoTrabajador2}$`);
-saltarLinea();
-
-if (salarioNetoTrabajador1 > salarioNetoTrabajador2) {
-    print(`<h4>El trabajador que mas dinero gana es: ${nombreTrabajador1} (${salarioNetoTrabajador1}$)</h4>`);
+if (firstWorkerNetSalary > secondWorkerNetSalary) {
+    higherSalary = firstWorkerNetSalary;
+    higherSalaryWorkerName = firstWorkerName;
+} else {
+    higherSalary = secondWorkerNetSalary;
+    higherSalaryWorkerName = secondWorkerName;
 }
-if (salarioNetoTrabajador2 > salarioBruto1) {
-    print(`<h4>El trabajador que mas dinero gana es: ${nombreTrabajador2} (${salarioNetoTrabajador2}$)</h4>`);
-}
-if (salarioNetoTrabajador2 == salarioBruto1) {
-    print(`<h4>Ambos trabajadores ganan el mismo salario (${salarioNetoTrabajador1}$)</h4>`);
-}
+
+//Info on Screen
+print(`<h2>Comparación de salarios</h2>`);
+print(`<strong>Trabajador 1</strong>`);
+print(`Nombre: ${firstWorkerName}`);
+print(`Salario Bruto: ${firstWorkerGrossSalary}$`);
+print(`Bonificaciones: ${firstWorkerBonus}$`);
+print(`Deducciones: ${firstWorkerDeductions}$`);
+print(`<strong>Salario Neto: ${firstWorkerNetSalary}$ </strong>`);
+
+lineBreak();
+
+print(`<strong>Trabajador 2</strong>`);
+print(`Nombre: ${secondWorkerName}`);
+print(`Salario Bruto: ${secondWorkerGrossSalary}$`);
+print(`Bonificaciones: ${secondWorkerBonus}$`);
+print(`Deducciones: ${secondWorkerDeductions}$`);
+print(`<strong>Salario Neto: ${secondWorkerNetSalary}$ </strong>`);
+
+lineBreak();
+print(`<strong> Salario Neto mas Alto: ${higherSalary}$ </strong> Correspondiente a <strong>${higherSalaryWorkerName}</strong>`);
 

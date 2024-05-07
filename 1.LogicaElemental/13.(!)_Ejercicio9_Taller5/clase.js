@@ -8,61 +8,83 @@ Elabore un algoritmo que permita realizar un registro para cada vehiculo ingresa
 */
 
 
-//DECLARACION DE FUNCIONES
-function saltarLinea() {
-    document.write("<br>");
-    document.write("<br>");
+//WORK-FLOW FUNCTION'S
+function print(text) {
+    document.write(text);
+    document.write("</br>");
 }
 
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
-    document.write("<br>");
+function lineBreak() {
+    document.write("</br>");
+    document.write("</br>");
+}
+//
+
+function calculateMoneyCollectedDuringTheDay(numberOfPassengers, ticketCost) {
+    return (numberOfPassengers * ticketCost);
 }
 
-document.write(`<h2>Ejercicio Registro Flota de Vehiculos Basico</h2>`);
+function calculateDriverPayment(totalCollected) {
+    return (totalCollected * (20 / 100));
+}
 
-const pasajeBus = 2200;
-const pasajeBuseta = 2500;
-const pasajeColectivo = 3500;
-let continuar;
-let i = 1;
-let nombreConductor;
-let placa;
-let tipoVehiculo;
-let numeroPasajerosTransportados;
-let dineroRecolectado;
-let pagoConductor;
+let enterRegistration;
+let registryNumber = 0;
+let driverName;
+let vehiclePlate;
+let vehicleType;
+let numberOfPassengersTransported;
+let driverPay;
+let moneyCollectedDuringTheDay;
+let ticketCost;
+let busTicketCost = 2200;
+let busetaTicketCost = 2500;
+let colectivoTicketCost = 3500;
+
+
 do {
-    print(`<strong>Registro#${i}</strong>`);
-    nombreConductor = prompt(`Buenas Tardes, Cual es su nombre?`);
-    print(`Nombre Conductor:: ${nombreConductor}`);
-    placa = prompt(`Cual es la Placa de su Vehiculo?`);
-    print(`Placa Vehiculo: ${placa}`);
-    tipoVehiculo = prompt(`Que tipo de Vehiculo conduce? (1= bus, 2= buseta, 3= colectivo)`);
-    numeroPasajerosTransportados = parseInt(prompt(`Cuantos pasajeros transporto el dia de Hoy?`));
-    print(`Cantidad de Pasajeros transportados durante la Jornada: ${numeroPasajerosTransportados}`);
-    switch (tipoVehiculo) {
-        case "1":
-            dineroRecolectado = (numeroPasajerosTransportados * pasajeBus);
-            print(`Tipo de Vehiculo: Bus`);
+    registryNumber += 1;
+    console.log(registryNumber); //Sin este console.log no se pueden ver los registros de forma progresiva
+
+    driverName = prompt(`Ingrese el Nombre del Conductor`);
+    vehiclePlate = prompt(`Ingrese la placa del Vehiculo`);
+    vehicleType = parseInt(prompt(`Seleccione el tipo de Vehiculo (1:Bus, 2:Buseta, 3:Colectivo)`));
+
+    switch (vehicleType) {
+        case 1:
+            vehicleType = 'Bus'
+            ticketCost = busTicketCost;
             break;
-        case "2":
-            dineroRecolectado = (numeroPasajerosTransportados * pasajeBuseta);
-            print(`Tipo de Vehiculo: Buseta`);
+        case 2:
+            vehicleType = 'Buseta'
+            ticketCost = busetaTicketCost;
             break;
-        case "3":
-            dineroRecolectado = (numeroPasajerosTransportados * pasajeColectivo);
-            print(`Tipo de Vehiculo: Colectivo`);
+        case 3:
+            vehicleType = 'Colectivo'
+            ticketCost = colectivoTicketCost;
             break;
     }
-    print(`Dinero recolectado durante la jornada: ${dineroRecolectado}$`)
-    pagoConductor = (dineroRecolectado * (20 / 100));
-    print(`Pago correspondiente al Conductor: ${pagoConductor}$`)
 
-    i += 1;
-    saltarLinea();
-    continuar = prompt(`Desea Ingresar un nuevo registro?`)
-    if (continuar == "No" || continuar == "N" || continuar == "NO" || continuar == "no") {
+    numberOfPassengersTransported = parseInt(prompt(`Ingrese la cantidad de pasajeros transportados durante la jornada`));
+    moneyCollectedDuringTheDay = calculateMoneyCollectedDuringTheDay(numberOfPassengersTransported, ticketCost);
+    driverPay = calculateDriverPayment(moneyCollectedDuringTheDay);
+
+    //CONSOLE INFO moved inside the loop
+    console.log(`
+    Registro #${registryNumber}
+    Nombre del conductor: ${driverName}
+    Placa del Vehiculo: ${vehiclePlate}
+    Tipo de Vehiculo que Conduce: ${vehicleType}
+    Costo del Pasaje: ${ticketCost}$
+    Pasajeros transportados durante la Jornada: ${numberOfPassengersTransported}
+    Dinero generado durante la jornada: ${moneyCollectedDuringTheDay}$
+    Pago correspondiente al conductor: ${driverPay}$
+    `);
+
+    enterRegistration = prompt(`Desea ingresar un nuevo registro? (S o N)`).toLowerCase();
+    if (enterRegistration == 'n' || enterRegistration == 'no') {
         break;
     }
-} while (continuar == "Si" || continuar == "S" || continuar == "si" || continuar == "SI");
+} while (enterRegistration == 's' || enterRegistration == 'si');
+
+

@@ -1,45 +1,30 @@
 /* 
-Cuántos años de diferencia tienes con tu hermano? Escribe un programa que muestre el mensaje ¨Nuestra diferencia de edad es¨, La respuesta puede dar negativa, sin duda. No olvides 
-de usar las funciones saltarLinea e imprimir y de incluir la etiqueta <meta> para resolver  problemas de acentuación.
+Cuántos años de diferencia tienes con tu hermano? Escribe un programa que muestre el mensaje ¨Nuestra diferencia de edad es x Años¨.
  */
 
-//DECLARACION DE FUNCIONES
-//1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
-    document.write("<br>");
+//WORK-FLOW FUNCTIONS
+function print(text) {
+    document.write(text);
+    document.write(`</br>`);
 }
 
-function saltarLinea() {
-    document.write("<br>");
-    document.write("<br>");
+function lineBreak() {
+    document.write('</br>');
+    document.write('</br>');
 }
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
-function calculeDiferenciaEdadHermanos(edadHermanoMayor, edadHermanoMenor) {
-    return (edadHermanoMayor - edadHermanoMenor)
+function calculateDifference(ageOlder, ageYounger) {
+    return (ageOlder - ageYounger);
 }
 
 
+const olderBrotherAge = parseInt(prompt(`Ingrese la edad del hermano Mayor`));
+const youngerBrotherAge = parseInt(prompt(`Ingrese la edad del hermano Menor`));
+const ageDifference = calculateDifference(olderBrotherAge, youngerBrotherAge);
 
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-// - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -
-
-
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-let edadHermanoMayor = parseFloat(prompt(`Cual es la edad del hermano mayor?`));
-let edadHermanoMenor = parseFloat(prompt(`Cual es la edad del hermano menor?`));
-
-//3.VARIABLES FRUTO DE CALCULOS MATEMATICOS
-let diferenciaEdades = calculeDiferenciaEdadHermanos(edadHermanoMayor, edadHermanoMenor)
-
-//LOOPS
-// - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -  - - - - -
-
-
-//INFO EN PANTALLA
-document.write("<h3> Calculo diferencia Edades Hermanos </h3>");
-print(`La edad del hermano Mayor es de: ${edadHermanoMayor} Años`);
-print(`La edad del hermano Menor es de: ${edadHermanoMenor} Años`);
-print(`La diferencia de edad entre los hermanos es de: ${diferenciaEdades} Años`)
+//INFO ON SCREEN
+print(`<h2>Ejercicio 2 Diferencia de edades</h2>`);
+print(`<strong>Edad Hermano Mayor:</strong> ${olderBrotherAge}`);
+print(`<strong>Edad Hermano Menor:</strong> ${youngerBrotherAge}`);
+lineBreak();
+print(`Diferencia de edad: ${ageDifference} Años`);

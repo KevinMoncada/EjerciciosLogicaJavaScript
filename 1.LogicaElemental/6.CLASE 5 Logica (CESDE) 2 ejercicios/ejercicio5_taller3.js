@@ -9,75 +9,47 @@ y si es TEMPORAL solo debe leer el nombre y el número de horas trabajadas; esto
 
 //DECLARACION DE FUNCIONES
 //1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
+function print(text) {
+    document.write(text);
     document.write("<br>");
 }
 
-function saltarLinea() {
+function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+//
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
-function calculeSalarioNeto(salariobasicohora, numhorastrabajadas, deducciones, bonos) {
-    return ((salariobasicohora * numhorastrabajadas) + deducciones - bonos)
+
+const userName = prompt(`Cual es su nombre?`);
+const basicHourlySalaryTemporaryWorker = 6000;
+let typeOfContract = prompt(`${userName}, Que tipo de contrato tienes? (Fijo=1 , Temporal=2)`);
+
+let numberOfHoursWorked;
+let basicHourlySalary;
+let deductions;
+let bonus;
+let netSalary;
+let grossSalary;
+
+
+if (typeOfContract == "1") {
+    typeOfContract = "Fijo";
+    numberOfHoursWorked = parseInt(prompt(`Cuantas Horas laboro este mes?`));
+    basicHourlySalary = parseInt(prompt(`Cual es su salario basico hora?`));
+    deductions = parseInt(prompt(`Cual es el valor de sus deducciones?`));
+    bonus = parseInt(prompt(`Cual es el valor de sus bonificaciones?`));
+    grossSalary = (basicHourlySalary * numberOfHoursWorked);
+    netSalary = (grossSalary + bonus - deductions);
+} else if (typeOfContract == "2") {
+    typeOfContract = "Temporal"
+    numberOfHoursWorked = parseInt(prompt(`Cuantas Horas laboro este mes?`));
+    netSalary = (numberOfHoursWorked * basicHourlySalaryTemporaryWorker);
 }
 
-
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-let salarioBasicoHoraTemporal = 6000;
-
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-let tipoDeContrato = prompt(`Que tipo de contrato suscribe usted actualmente con la empresa? (Fijo o Temporal)`);
-
-let nombreTrabajador;
-let numeroHorasTrabajadas;
-let salarioBasicoHora;
-let bonificacionesFijo;
-let deduccionesFijo;
-let salarioBrutoFijo;
-let salarioNetoFijo;
-
-
-if (tipoDeContrato == `fijo` || tipoDeContrato == `Fijo` || tipoDeContrato == `FIJO` || tipoDeContrato == `FIJO`) {
-    nombreTrabajador = prompt(`Ingrese su nombre`);
-    numeroHorasTrabajadas = parseFloat(prompt(`Ingrese la cantidad de horas laboradas en el mes`));
-    salarioBasicoHora = parseFloat(prompt(`Ingrese su salario basico/hora estipulado en el contrato`));
-    bonificacionesFijo = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`));
-    deduccionesFijo = parseFloat(prompt(`Ingrese el valor de sus Deducciones`));
-    salarioBrutoFijo = (salarioBasicoHora * numeroHorasTrabajadas);
-    salarioNetoFijo = calculeSalarioNeto(salarioBasicoHora, numeroHorasTrabajadas, deduccionesFijo, bonificacionesFijo)
-
-    document.write(`<h2>Calculo Salario Neto Segun Contrato</h2>`);
-    print(`Trabajador con Contrato: FIJO`);
-    print(
-        `
-    Nombre trabajador: ${nombreTrabajador} <br>
-    Numero de horas trabajadas al mes: ${numeroHorasTrabajadas} <br>
-    Salario basico Hora: ${salarioBasicoHora} <br>
-    Bonificaciones: ${bonificacionesFijo} <br>
-    Deducciones: ${deduccionesFijo} <br>
-    Salario Bruto: ${salarioBrutoFijo} <br>
-    Salario neto: ${salarioNetoFijo} <br>
-    `
-    )
-} else {
-    nombreTrabajador = prompt(`Ingrese su nombre`);
-    numeroHorasTrabajadas = parseFloat(prompt(`Ingrese la cantidad de horas laboradas en el mes`));
-    salarioNetoTemporal = (salarioBasicoHoraTemporal * numeroHorasTrabajadas);
-
-    document.write(`<h2>Calculo Salario Neto Segun Contrato</h2>`);
-    print(`Trabajador con Contrato: TEMPORAL`);
-    print(
-        `
-    Nombre trabajador: ${nombreTrabajador} <br>
-    Numero de horas trabajadas al mes: ${numeroHorasTrabajadas} <br>
-    Salario basico Hora: ${salarioBasicoHoraTemporal} <br>
-    Salario neto: ${salarioNetoTemporal} <br>
-    `
-    )
-}
-
-
+//INFO ON SCREEN
+print(`<h2> Calculo Salario Neto según Contrato </h2>`);
+print(`Nombre del trabajador: ${userName}`);
+print(`Tipo de contrato: ${typeOfContract}`);
+print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+print(`Salario Neto: ${netSalary}$`);

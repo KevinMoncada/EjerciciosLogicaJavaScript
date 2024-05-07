@@ -5,38 +5,30 @@ VAMOS A CREAR UN PROGRAMA QUE ME PERMITA CALCULAR LOS AÑOS EN LOS CUALES HUBO M
 NOTAS:
 - EL OBJETIVO DE TENER UNA FECHA LIMITE ES PARA EVITAR QUE EL PROGRAMA SE CONVIERTA EN UN BUCLE INFINITO DE PROCESAMIENTO INCAPAZ DE SALIR DE LA CONDICION QUE DEFINIMOS, SI ESTO OCURRE 
 ES MUY PROBABLE QUE VSCODE TERMINE CRASHEANDO O INCLUSO QUE SE CONGELE EL PC
-
  */
 
+//DECLARACION DE FUNCIONES
 //1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
+function print(text) {
+    document.write(text);
     document.write("<br>");
 }
 
-function saltarLinea() {
+function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+//
 
+// let yearInWhichThereWasWorldCup = firstYear;
+const firstYear = 1930;
+const limitYear = parseInt(prompt(`Hasta que año desea saber cuando se disputara o disputó una Copa Mundial de Futbol?`));
 
-let añoInicioMundiales = 1930;
-let fechaLimite = parseInt(prompt(`Hasta que año desea saber las fechas en que se disputaron copas mundiales?`))
-
-
-//USANDO WHILE
-
-// let x = añoInicioMundiales
-// while (x <= fechaLimite) {
-//     print(`Hubo mundial en el año ${x}`)
-//     x += 4;
+// while (yearInWhichThereWasWorldCup <= limitYear) {
+//     print(`Hubo Copa Mundial de Futbol en el año: ${yearInWhichThereWasWorldCup}`);
+//     yearInWhichThereWasWorldCup += 4;
 // }
 
-//USANDO FOR
-
-for (let index = añoInicioMundiales; index <= fechaLimite; index += 4) {
-    print(`Hubo mundial en el año ${index}`)
+for (let yearInWhichThereWasWorldCup = firstYear; yearInWhichThereWasWorldCup <= limitYear; yearInWhichThereWasWorldCup += 4) {
+    print(`Hubo Copa Mundial de Futbol en el año: ${yearInWhichThereWasWorldCup}`);
 }
-
-
-

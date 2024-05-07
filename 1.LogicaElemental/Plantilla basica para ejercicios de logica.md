@@ -1,30 +1,23 @@
 ```js
-//DECLARACION DE FUNCIONES
-//1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
-    document.write("<br>");
+//WORK-FLOW FUNCTION'S
+function print(text) {
+  document.write(text);
+  document.write("</br>");
 }
 
-function saltarLinea() {
-    document.write("<br>");
-    document.write("<br>");
+function lineBreak() {
+  document.write("</br>");
+  document.write("</br>");
 }
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
+//1. DECLARACION DE FUNCIONES
+//2. FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
 
+//3. DECLARACION DE VARIABLES
+//3.1 VARIABLES PROCEDENTES DE DATOS HISTORICOS
+//3.2 VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
+//3.3 VARIABLES FRUTO DE CALCULOS MATEMATICOS
+//3.4 LOOPS
 
-
-
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-
-//3.VARIABLES FRUTO DE CALCULOS MATEMATICOS
-
-
-//LOOPS
-
-//INFO EN PANTALLA
+//4. INFO EN PANTALLA
 ```

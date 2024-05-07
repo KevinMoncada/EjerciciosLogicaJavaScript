@@ -16,98 +16,111 @@ El administrador desea saber:
 */
 
 
-//FUNCIONES
-function print(textoenpantalla) {
-  document.write(textoenpantalla);
-  document.write("<br>");
+//WORK-FLOW FUNCTION'S
+function print(text) {
+  document.write(text);
+  document.write("</br>");
 }
 
-function saltarLinea() {
-  document.write("<br>");
-  document.write("<br>");
+function lineBreak() {
+  document.write("</br>");
+  document.write("</br>");
 }
-
-document.write(`<h2>Ejercicio Registro Flota de Vehiculos Avanzado</h2>`);
-
-const pasajeColectivo = 3500;
-const pasajeMicrobus = 2100;
-const pasajeBuseta = 2500;
-const pasajeBus = 2200;
-let continuar;
-let i = 0;
-let nombreConductor;
-let placa;
-let tipoVehiculo;
-let numeroPasajerosTransportados;
-let dineroRecolectado;
-let pagoConductor;
 //
-let dineroTotalJornada = 0;
-let colectivosMasCienPasajeros = 0;
-let pasajerosTransportadosMicrobuses = 0;
-let promPasajerosTransportadosMicrobuses;
-let registrosMicrobus = 0;
-let dineroRecolectadoBus = 0;
-let registrosBusetas = 0;
-do {
-  i += 1;
-  print(`<strong>Registro#${i}</strong>`);
-  nombreConductor = prompt(`Buenas Tardes, Cual es su nombre?`);
-  print(`Nombre Conductor:: ${nombreConductor}`);
-  placa = prompt(`Cual es la Placa de su Vehiculo?`);
-  print(`Placa Vehiculo: ${placa}`);
-  tipoVehiculo = prompt(`Que tipo de Vehiculo conduce? (1=colectivo, 2=microbús, 3=buseta, 4=bus)`);
-  numeroPasajerosTransportados = parseInt(prompt(`Cuantos pasajeros transporto el dia de Hoy?`));
-  print(`Cantidad de Pasajeros transportados durante la Jornada: ${numeroPasajerosTransportados}`);
-  switch (tipoVehiculo) {
-    case "1":
-      dineroRecolectado = (numeroPasajerosTransportados * pasajeColectivo);
-      if (numeroPasajerosTransportados > 100) {
-        colectivosMasCienPasajeros += 1;
-      }
-      print(`Tipo de Vehiculo: Colectivo`);
-      print(`Valor pasaje: ${pasajeColectivo}$`);
-      break;
-    case "2":
-      dineroRecolectado = (numeroPasajerosTransportados * pasajeMicrobus);
-      registrosMicrobus += 1;
-      pasajerosTransportadosMicrobuses = (pasajerosTransportadosMicrobuses + numeroPasajerosTransportados);
-      promPasajerosTransportadosMicrobuses = (pasajerosTransportadosMicrobuses / registrosMicrobus);
-      print(`Tipo de Vehiculo: Microbús`);
-      print(`Valor pasaje: ${pasajeMicrobus}$`);
 
+function calculateMoneyCollectedDuringTheDay(numberOfPassengers, ticketCost) {
+  return (numberOfPassengers * ticketCost);
+}
+
+
+let enterRegistration;
+let registryNumber = 0;
+let driverName;
+let vehiclePlate;
+let vehicleType;
+let numberOfPassengersTransported;
+let ticketCost;
+let moneyCollectedByTheWorker;
+
+let totalMoneyCollected = 0;
+let colectivosMoreThan100Passengers = 0;
+let numberOfPassengersTransportedByMicrobuses = 0;
+let microbusCounter = 0;
+let averageNumberOfPassengersTransportedByMicrobus = 0;
+let moneyCollectedByBuses = 0;
+let percentageOfBusetas = 0;
+let busetasCounter = 0;
+
+
+//El cilco muestra información progresivamente pero solo despues de recargar la pagina minimo una vez
+do {
+  alert('Hello')
+  console.log(registryNumber);
+  registryNumber += 1;
+
+  driverName = prompt(`Ingrese el Nombre del Conductor`);
+  vehiclePlate = prompt(`Ingrese la placa del Vehiculo`);
+  vehicleType = parseInt(prompt(`Seleccione el tipo de Vehiculo (1=colectivo, 2=microbús, 3=buseta, 4=bus)`));
+  ticketCost = parseFloat(prompt(`Ingrese el valor del pasaje`));
+  numberOfPassengersTransported = parseInt(prompt(`Ingrese la cantidad de pasajeros transportados durante la jornada`));
+  moneyCollectedByTheWorker = calculateMoneyCollectedDuringTheDay(numberOfPassengersTransported, ticketCost);
+
+  switch (vehicleType) {
+    case 1:
+      vehicleType = 'Colectivo'
+      if (numberOfPassengersTransported > 100) {
+        colectivosMoreThan100Passengers += 1;
+      }
       break;
-    case "3":
-      registrosBusetas += 1;
-      dineroRecolectado = (numeroPasajerosTransportados * pasajeBuseta);
-      print(`Tipo de Vehiculo: Buseta`);
-      print(`Valor pasaje: ${pasajeBuseta}$`);
+    case 2:
+      vehicleType = 'Microbús'
+      numberOfPassengersTransportedByMicrobuses = (numberOfPassengersTransportedByMicrobuses + numberOfPassengersTransported);
+      microbusCounter += 1;
       break;
-    case "4":
-      dineroRecolectado = (numeroPasajerosTransportados * pasajeBus);
-      dineroRecolectadoBus = (dineroRecolectadoBus + dineroRecolectado);
-      print(`Tipo de Vehiculo: Bus`);
-      print(`Valor pasaje: ${pasajeBus}$`);
+    case 3:
+      vehicleType = 'Buseta'
+      busetasCounter += 1;
+      break;
+    case 4:
+      vehicleType = 'Bus'
+      moneyCollectedByBuses = (moneyCollectedByBuses + moneyCollectedByTheWorker);
       break;
   }
-  print(`Dinero recolectado por el conductor: ${dineroRecolectado}$`)
-  pagoConductor = (dineroRecolectado * (20 / 100));
-  print(`Pago correspondiente al Conductor: ${pagoConductor}$`);
 
 
-  dineroTotalJornada = (dineroTotalJornada + dineroRecolectado);
-  porcentajeBusetasRespectoAFlota = ((100 * registrosBusetas) / i);
+  //CONSOLE INFO moved inside the loop
+  console.log(`
+  Registro #${registryNumber}
+  Nombre del conductor: ${driverName}
+  Placa del Vehiculo: ${vehiclePlate}
+  Tipo de Vehiculo que Conduce: ${vehicleType}
+  Costo del Pasaje: ${ticketCost}$
+  Pasajeros transportados durante la Jornada: ${numberOfPassengersTransported}
+  Dinero generado durante la jornada: ${moneyCollectedByTheWorker}$
+  `);
 
-  continuar = prompt(`Desea Ingresar un nuevo registro?`)
-  if (continuar == "No" || continuar == "N" || continuar == "NO" || continuar == "no") {
+  //
+  totalMoneyCollected = (totalMoneyCollected + moneyCollectedByTheWorker);
+  averageNumberOfPassengersTransportedByMicrobus = (numberOfPassengersTransportedByMicrobuses / microbusCounter);
+  percentageOfBusetas = ((busetasCounter * 100) / registryNumber);
+
+
+  enterRegistration = prompt(`Desea ingresar un nuevo registro? (S o N)`).toLowerCase();
+  if (enterRegistration == 'n' || enterRegistration == 'no') {
     break;
   }
-  saltarLinea();
-} while (continuar == "Si" || continuar == "S" || continuar == "si" || continuar == "SI");
+} while (enterRegistration == 's' || enterRegistration == 'si');
 
-print(`<hr>`)
-print(`El dinero total recolectado durante la joranda fue: ${dineroTotalJornada}$`);
-print(`Los colectivos que transportaron a mas de 100 pasajeros fueron: ${colectivosMasCienPasajeros}`);
-print(`El promedio de pasajeros transportados por los Microbuses es de: ${promPasajerosTransportadosMicrobuses}`);
-print(`El dinero total recolectado por los buses fue: ${dineroRecolectadoBus}$`);
-print(`El porcentaje de busetas respecto a la flota es de: ${porcentajeBusetasRespectoAFlota}%`);
+console.log(`- - - - - - - - - - - - - - - - - - - - - - -`);
+
+console.log(`
+Dinero total generado por la compañia durante la jornada: ${totalMoneyCollected}$
+Colectivos que transportaron a mas de 100 pasajeros: ${colectivosMoreThan100Passengers}
+Promedio de pasajeros transportados por Microbuses: ${averageNumberOfPassengersTransportedByMicrobus}
+Dinero recolectado por los Buses: ${moneyCollectedByBuses}$
+Porcentaje de Busetas respecto a demas vehiculos: ${percentageOfBusetas}%
+`)
+
+
+
+

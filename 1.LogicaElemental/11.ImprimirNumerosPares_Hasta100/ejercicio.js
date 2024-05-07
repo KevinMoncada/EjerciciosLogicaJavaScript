@@ -2,34 +2,24 @@
 CREAR UN ALGORITMO QUE IMPRIMA TODOS LOS NUMEROS PARES DEL 0 AL 100 Y AL FINAL MUESTRE LA PALABRA FIN
  */
 
-
-/* DECLARACION DE FUNCIONES */
-//1.WORK-FLOW
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
+//DECLARACION DE FUNCIONES
+//1.WORK-FLOW FUNCTION'S
+function print(text) {
+    document.write(text);
     document.write("<br>");
 }
 
-function saltarLinea() {
-    document.write("<br>");
-    document.write("<br>");
+function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+//
 
-//LOOP
-//USANDO WHILE
-var numerosPares = 0; //VARIABLE DE CONTROL
-while (numerosPares <= 100) {
-    print(numerosPares);
-    //ACTUALIZADOR
-    numerosPares += 2;
-}
-print("FIN")
-saltarLinea();
+const start = 0;
+const end = 100;
+let pairNumbers;
 
-//USANDO FOR
-for (numerosPares = 0; numerosPares <= 100; numerosPares += 2) {
-    print(numerosPares);
+
+for (pairNumbers = start; pairNumbers <= end; pairNumbers += 2) {
+    print(pairNumbers);
 }
-print("FIN")

@@ -8,60 +8,47 @@ AHORA VAMOS A MEJORAR NUESTRO PROGRAMA, VAMOS A AÑADIR LA FUNCIONALIDAD DE QUE 
 SEGUN LA CLASIFICACION ESTABLECIDA POR LA TABLA DE LA OMS (LA IMAGEN SE ENCUENTRA ADJUNTA EN LA CARPETA RAIZ DEL PROYECTO)
 */
 
-
-//DECLARACION DE FUNCIONES
-//1.WORK-FLOW FUNCTION'S
-function print(textoenpantalla) {
-    document.write(textoenpantalla);
-    document.write("<br>");
+//WORK-FLOW FUNCTIONS
+function print(text) {
+    document.write(text);
+    document.write('</br>');
 }
 
-function saltarLinea() {
-    document.write("<br>");
-    document.write("<br>");
+function lineBreak() {
+    document.write('</br>');
 }
+//
 
-//2.FUNCIONES QUE REALIZAN PROCEDIMIENTOS MATEMATICOS (FORMULAS)
-function calculeIMC(peso, altura) {
-    return (peso / (altura ** 2));
+function calculateIMC(weight, height) {
+    return (weight / (height ** 2));
 }
 
 
-
-//DECLARACION DE VARIABLES
-//1.VARIABLES PROCEDENTES DE DATOS HISTORICOS
-// - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//2.VARIABLES PROCEDENTES DE DATOS SUMINISTRADOS POR EL USUARIO
-const nombreUsuario = prompt(`Hola! Cual es tu nombre?`);
-const pesoUsuario = parseInt(prompt(`${nombreUsuario} por favor ingresa tu peso`));
-const alturaUsuario = parseFloat(prompt(`Ahora ingresa tu altura`));
-
-//3.VARIABLES FRUTO DE CALCULOS MATEMATICOS
-let userIMC = calculeIMC(pesoUsuario, alturaUsuario)
-
-//LOOPS
-// - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-//INFO EN PANTALLA
-document.write('<h2> Calculadora IMC </h2>');
-print(`<h3> Datos Usuario </h3>`);
-print(`Nombre: ${nombreUsuario}`);
-print(`Peso: ${pesoUsuario} Kg`);
-print(`Altura: ${alturaUsuario} Metros`);
-saltarLinea();
-print(`El IMC de ${nombreUsuario} es de: ${userIMC}Kg/M`);
+const userName = prompt(`Bienvenido!! Cual es su nombre?`);
+const userWeight = parseFloat(prompt(`Ingrese su peso`));
+const userHeight = parseFloat(prompt(`Ingrese su Altura`));
+const userIMC = calculateIMC(userWeight, userHeight);
+let userIMCCategory;
 
 switch (true) {
     case (userIMC < 18.5):
-        print(`Insuficiencia Ponderal`);
+        userIMCCategory = `Insuficiencia ponderal`;
         break;
-    case (userIMC > 18.5 || userIMC < 24.9):
-        print(`Intervalo Normal`);
+    case ((userIMC > 18.5) && (userIMC < 24.9)):
+        userIMCCategory = `Intervalo Normal`;
         break;
-    case (userIMC >= 25):
-        print(`Sobrepeso`);
+    case (userIMC > 24.9):
+        userIMCCategory = `Sobrepeso`;
         break;
 }
+
+
+
+//INFO ON SCREEN
+print(`<h2>Calculadora IMC</h2>`);
+print(`Usuario: ${userName}`);
+print(`Peso del Usuario: ${userWeight}Kg`);
+print(`Altura del Usuario: ${userHeight}cm`);
+print(`IMC del usuario: ${userIMC}`);
+print(`Clasificación según la OMS: ${userIMCCategory}`);
 
