@@ -28,12 +28,12 @@ console.log(secretNumber);
 
 while (numberEnteredByUser != secretNumber) {
   i += 1;
-  numberEnteredByUser = parseInt(prompt(`Ingresa un numero entero entre 0 y 100`));
+  numberEnteredByUser = parseInt(prompt(`Ingresa un numero entero entre 1 y 100`));
   console.log(`Numero ingresado #${i}: ${numberEnteredByUser}`);
   while (numberEnteredByUser < 0 || numberEnteredByUser > 100) {
-    alert(`ERROR!! Ingrese un numero entero dentro del rango establecido (Entre 0 y 100)`);
-    numberEnteredByUser = parseInt(prompt(`Ingresa un numero entero entre 0 y 100`));
     i += 1;
+    alert(`ERROR!! Ingrese un numero entero dentro del rango establecido (Entre 0 y 100)`);
+    numberEnteredByUser = parseInt(prompt(`Ingresa un numero entero entre 1 y 100`));
     console.log(`Numero ingresado #${i}: ${numberEnteredByUser}`);
   }
 

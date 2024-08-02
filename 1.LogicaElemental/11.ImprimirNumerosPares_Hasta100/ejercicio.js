@@ -15,11 +15,7 @@ function lineBreak() {
 }
 //
 
-const start = 0;
-const end = 100;
-let pairNumbers;
 
-
-for (pairNumbers = start; pairNumbers <= end; pairNumbers += 2) {
-    print(pairNumbers);
+for (let i = 0; i <= 100; i += 2) {
+    print(i)
 }

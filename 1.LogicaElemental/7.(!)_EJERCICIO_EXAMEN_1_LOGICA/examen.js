@@ -19,47 +19,62 @@ function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+
+function calculateGrossValue(articleUnityValue, articleQuantitySold) {
+    return (articleUnityValue * articleQuantitySold);
+}
+
+function calculateNetValue(grossValue, ivaValue, transportValue, discount) {
+    return (grossValue + ivaValue + transportValue - discount);
+}
 //
+const articleNameOrId = prompt(`Ingrese el nombre o Id del Articulo`);
+const articleUnityValue = parseFloat(prompt(`Ingrese el valor del Articulo`));
+const articleQuantitySold = parseInt(prompt(`Cantidad vendida`));
+let grossValue = calculateGrossValue(articleUnityValue, articleQuantitySold);
 
-function calculateGrossValue(quantity, unitValue) {
-    return (quantity * unitValue);
-}
-
-function calculateNetValue(grossValue, iva, transport, discount) {
-    return (grossValue + iva + transport - discount);
-}
+let ivaValue = (grossValue * (19 / 100));
+let transportValue = (grossValue * (5 / 100));
 
 
-const itemName = prompt(`Ingrese el nombre del Articulo`);
-const unitValue = parseFloat(prompt(`Ingrese el valor unitario del Articulo`));
-const quantitySold = parseInt(prompt(`Cuantas unidades se vendieron?`));
-const grossValueOfTheSale = calculateGrossValue(quantitySold, unitValue);
-const iva = (grossValueOfTheSale * (19 / 100));
-const transportationCost = (grossValueOfTheSale * (5 / 100));
-let discountCase;
-let discountValue;
-
-if (grossValueOfTheSale >= 100000) {
-    discountCase = `Politica 1, descuento del 10%`
-    discountValue = (grossValueOfTheSale * (10 / 100))
+let discount;
+let message;
+if (grossValue >= 100000) {
+    discount = (grossValue * (10 / 100));
+    message = "Aplica para el descuento del 10%"
 } else {
-    discountCase = `Politica 2, Descuento del 5%`
-    discountValue = (grossValueOfTheSale * (5 / 100))
+    discount = (grossValue * (5 / 100));
+    message = "Aplica para el descuento del 5%"
 }
-
-const netValueOfTheSale = calculateNetValue(grossValueOfTheSale, iva, transportationCost, discountValue);
+let netValue = calculateNetValue(grossValue, ivaValue, transportValue, discount);
 
 
 //INFO ON SCREEN
-print(`<h2> Ventas S.A.S</h2>`);
-print(`Nombre o referencia del articulo: ${itemName}`);
-print(`Valor unitario del articulo: ${unitValue}$`);
-print(`Cantidad a vender: ${quantitySold}`);
-print(`Valor Bruto de la venta: ${grossValueOfTheSale}$`);
-print(`Costo de transporte: ${transportationCost}$`);
-print(`Descuento: La compra aplica para ${discountCase}, el cual es por un valor de ${discountValue}$`);
-print(`IVA: ${iva}$`);
-print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
-print(`Valor Neto de la venta: ${netValueOfTheSale}$`);
+print(`<h2> Ejercicio Examen 1 CESDE </h2>`);
+print(`Nombre o ID del Articulo: ${articleNameOrId}`);
+print(`Valor Unitario del Articulo: ${articleUnityValue}$`);
+print(`Cantidad Vendida: ${articleQuantitySold}`);
+print(`Valor bruto de la venta: ${grossValue}$`);
+print(`Valor del descuento aplicado: ${discount}$ (${message})`);
+print(`Costo por Transporte: ${transportValue}$`);
+print(`Valor del IVA: ${ivaValue}$`);
+print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+print(`Valor Neto de la Venta: ${netValue}$`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

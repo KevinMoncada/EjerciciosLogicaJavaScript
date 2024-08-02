@@ -14,12 +14,14 @@ function lineBreak() {
     document.write("</br>");
 }
 
-const name = prompt(`Ingrese su nombre`);
-const age = parseInt(prompt(`Ingrese su edad`));
-const license = (prompt(`Tienes licencia de conduccion?`).toLowerCase());
+const userName = prompt(`Hola, cual es tu nombre?`);
+const hasALicense = (prompt(`${userName}, Tienes licencia de conduccion?`).toLowerCase());
+const userAge = prompt(`Cual es tu edad?`);
+const allowed = "Puedes conducir";
+const notAllowed = "No puedes conducir";
 
-if ((age >= 18) && ((license == 'si') || (license == 's'))) {
-    alert(`Felicidades, Puedes conducir`);
+if ((hasALicense == 'si' || hasALicense == 's') && (userAge >= 18)) {
+    alert(allowed)
 } else {
-    alert(`Lo siento, no puedes conducir`)
+    alert(notAllowed)
 }

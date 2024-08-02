@@ -16,21 +16,31 @@ function lineBreak() {
 //
 
 
-const baseNumber = parseInt(prompt(`Hola, Ingrese el numero del cual desea calcular las tablas de multiplicar`));
-const limitNumber = parseInt(prompt(`Hasta que multiplo desea calcular las tablas?`));
-// let multiple = 0;
-let result;
+const numberToCalculateTables = parseInt(prompt(`De que numero desea calcular las tablas de multiplicar?`));
+const limitMultiple = parseInt(prompt(`Hasta que multiplo desea calcular las tablas del ${numberToCalculateTables}?`));
+print(`Numero base al cual se le calcularan las tablas: ${numberToCalculateTables}`);
+print(`Multiplo limite: ${limitMultiple}`);
+print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
 
-print(`<h2>Calculo Tablas de Multiplicar</h2>`)
 
+//Usando While
+// let i = 0;
+// let result;
+// while (i <= limitMultiple) {
+//   //Calculation
+//   result = (numberToCalculateTables * i);
 
-// while (multiple <= limitNumber) {
-//   result = (multiple * limitNumber);
-//   print(` ${baseNumber} * ${multiple} = ${result}`);
-//   multiple++;
+//   //Info on Screen
+//   print(`${numberToCalculateTables} * ${i} = ${result}`);
+
+//   i += 1;
 // }
 
-for (let multiple = 0; multiple <= limitNumber; multiple++) {
-  result = (multiple * limitNumber);
-  print(` ${baseNumber} * ${multiple} = ${result}`);
+//Usando For
+let result;
+for (let i = 0; i <= limitMultiple; i += 1) {
+  //Calculation
+  result = (numberToCalculateTables * i);
+  //   //Info on Screen
+  print(`${numberToCalculateTables} * ${i} = ${result}`);
 }

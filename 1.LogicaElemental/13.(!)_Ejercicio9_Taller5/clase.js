@@ -20,71 +20,83 @@ function lineBreak() {
 }
 //
 
-function calculateMoneyCollectedDuringTheDay(numberOfPassengers, ticketCost) {
-    return (numberOfPassengers * ticketCost);
-}
+//Cost of Tickets
+const busTicketCost = 2200;
+const busetaTicketCost = 2500;
+const colectivoTicketCost = 3500;
 
-function calculateDriverPayment(totalCollected) {
-    return (totalCollected * (20 / 100));
-}
+//Info on Screen
+print(`<h2>Transporte S.A.S</h2>`);
 
-let enterRegistration;
-let registryNumber = 0;
-let driverName;
-let vehiclePlate;
-let vehicleType;
-let numberOfPassengersTransported;
-let driverPay;
-let moneyCollectedDuringTheDay;
+
+let i = 0;
 let ticketCost;
-let busTicketCost = 2200;
-let busetaTicketCost = 2500;
-let colectivoTicketCost = 3500;
+let vehicleType;
+let vehiclePlate;
+let driverName;
+let numberOfPassengersTransported;
+let moneyCollected;
+let driverPay;
+let recordVariable = (prompt(`Desea ingresar un nuevo registro?`)).toLowerCase();
 
 
+
+//El cilco muestra información progresivamente pero solo despues de recargar la pagina minimo una vez
 do {
-    registryNumber += 1;
-    console.log(registryNumber); //Sin este console.log no se pueden ver los registros de forma progresiva
-
-    driverName = prompt(`Ingrese el Nombre del Conductor`);
-    vehiclePlate = prompt(`Ingrese la placa del Vehiculo`);
-    vehicleType = parseInt(prompt(`Seleccione el tipo de Vehiculo (1:Bus, 2:Buseta, 3:Colectivo)`));
-
+    i += 1;
+    console.log(i); //Por algun motivo sin este console.log no funciona el ciclo de forma progresiva
+    vehicleType = (parseInt(prompt(`Seleccione el tipo de Vehiculo (1= Bus, 2= Buseta, 3= Colectivo)`)));
+    while ((vehicleType < 1) || (vehicleType > 3)) {
+        alert('ERROR!!, Ingrese una opción valida!')
+        vehicleType = (parseInt(prompt(`Seleccione el tipo de Vehiculo (1= Bus, 2= Buseta, 3= Colectivo)`)));
+    }
     switch (vehicleType) {
         case 1:
-            vehicleType = 'Bus'
+            vehicleType = 'Bus';
             ticketCost = busTicketCost;
             break;
         case 2:
-            vehicleType = 'Buseta'
+            vehicleType = 'Buseta';
             ticketCost = busetaTicketCost;
             break;
         case 3:
-            vehicleType = 'Colectivo'
+            vehicleType = 'Colectivo';
             ticketCost = colectivoTicketCost;
             break;
     }
 
-    numberOfPassengersTransported = parseInt(prompt(`Ingrese la cantidad de pasajeros transportados durante la jornada`));
-    moneyCollectedDuringTheDay = calculateMoneyCollectedDuringTheDay(numberOfPassengersTransported, ticketCost);
-    driverPay = calculateDriverPayment(moneyCollectedDuringTheDay);
+    driverName = prompt(`Ingrese el nombre del conductor`);
+    vehiclePlate = prompt(`Ingrese la placa del vehiculo`);
+    numberOfPassengersTransported = parseInt(prompt(`Cuantos pasajeros transporto el conductor durante la jornada?`));
 
-    //CONSOLE INFO moved inside the loop
+    moneyCollected = (numberOfPassengersTransported * ticketCost);
+    driverPay = (moneyCollected * (20 / 100));
+
+    print(`<strong>Registro #${i}</strong>`);
+    print(`Nombre del Conductor: ${driverName}`);
+    print(`Placa del Vehiculo: ${vehiclePlate}`);
+    print(`Tipo de Vehiculo: ${vehicleType}`);
+    print(`Costo del Pasaje: ${ticketCost}$`);
+    print(`Numero de pasajeros transportados durante la jornada: ${numberOfPassengersTransported} Personas`);
+    print(`Dinero recolectado durante la jornada: ${moneyCollected}$`);
+    print(`Pago correspondiente al conductor (20% del total generado): ${driverPay}$`);
+    lineBreak();
+
     console.log(`
-    Registro #${registryNumber}
-    Nombre del conductor: ${driverName}
-    Placa del Vehiculo: ${vehiclePlate}
-    Tipo de Vehiculo que Conduce: ${vehicleType}
-    Costo del Pasaje: ${ticketCost}$
-    Pasajeros transportados durante la Jornada: ${numberOfPassengersTransported}
-    Dinero generado durante la jornada: ${moneyCollectedDuringTheDay}$
-    Pago correspondiente al conductor: ${driverPay}$
-    `);
+        Registro #${i}
+        Nombre del Conductor: ${driverName}
+        Placa del Vehiculo: ${vehiclePlate}
+        Tipo de Vehiculo: ${vehicleType}
+        Costo del Pasaje: ${ticketCost}$
+        Numero de pasajeros transportados durante la jornada: ${numberOfPassengersTransported} Personas
+        Dinero recolectado durante la jornada: ${moneyCollected}$
+        Pago correspondiente al conductor (20% del total generado): ${driverPay}$
+        `);
 
-    enterRegistration = prompt(`Desea ingresar un nuevo registro? (S o N)`).toLowerCase();
-    if (enterRegistration == 'n' || enterRegistration == 'no') {
+
+    recordVariable = (prompt(`Desea ingresar un nuevo registro?`)).toLowerCase();
+    if ((recordVariable == 'no') || (recordVariable == 'n')) {
         break;
     }
-} while (enterRegistration == 's' || enterRegistration == 'si');
-
+} while ((recordVariable == 'si') || (recordVariable == 's'));
 

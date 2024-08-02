@@ -16,21 +16,31 @@ function lineBreak() {
 }
 //
 
+const userName = prompt(`Ingrese su nombre`);
+let numberOfFamilyMembers = parseInt(prompt(`${userName}, De cuantas personas se conforma su nucleo familiar?`));
 
-let numberOfFamilyMembers = parseInt(prompt(`De cuantas personas se compone su nucleo familiar?`));
-let familyMemberAge;
-let accumulationOfAges = 0;
+//INFO ON SCREEN
+print(`<h2> Edad promedio de una Familia </h2>`);
+print(`Nombre de la persona cabeza de familia: ${userName}`);
+print(`Numero de personas que conforman el nucleo familiar: ${numberOfFamilyMembers}`);
 
-print(`La cantidad de personas que conforman el nucleo familiar del usuario es de: ${numberOfFamilyMembers}`);
 
+let familiMembersAgeAcumulation = 0;
+let familyMemberAge = 0;
 for (let i = 1; i <= numberOfFamilyMembers; i += 1) {
-    console.log(i);
-    familyMemberAge = parseInt(prompt(`Cual es la edad del familiar #${i}`));
-    accumulationOfAges = (accumulationOfAges + familyMemberAge);
-
-    print(`La edad del familiar #${i} es: ${familyMemberAge} Años`);
+    familyMemberAge = parseInt(prompt(`Cual es la edad del familiar #${i}?`));
+    print(`Edad del familiar #${i}: ${familyMemberAge} Años`);
+    console.log(familyMemberAge);
+    familiMembersAgeAcumulation = (familiMembersAgeAcumulation + familyMemberAge);
+    console.log({ familiMembersAgeAcumulation });
 }
 
-const averageAgeOfFamily = (accumulationOfAges / numberOfFamilyMembers);
-print(`- - - - - - - - - - - - - - - - - - - - -`);
-print(`La edad promedio de la familia es: ${averageAgeOfFamily} Años`);
+let averageAge = (familiMembersAgeAcumulation / numberOfFamilyMembers);
+
+print(`Sumatoria de edades de todos los miembros de la familia: ${familiMembersAgeAcumulation} Años`);
+print(`La edad promedio de la familia es: ${averageAge} Años`);
+
+
+
+
+

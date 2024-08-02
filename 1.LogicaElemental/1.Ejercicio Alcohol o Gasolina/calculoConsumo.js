@@ -6,34 +6,33 @@ divide la distancia recorrida entre la cantidad de litros gastados. Imprime el v
 Por otro lado, si el carro usa alcohol como combustible, el mismo tanque de 40 litros hace un recorrido de 300 kilómetros. ¿Cuál es el la eficiencia del carro usando alcohol? 
  */
 
-//WORK-FLOW FUNCTION'S
+
+//WORKFLOW FUNCTION'S
 function print(text) {
   document.write(text);
-  document.write('</br>');
+  document.write(`<br>`);
 }
 
 function lineBreak() {
-  document.write('</br>');
-  document.write('</br>');
+  document.write(`<br>`);
+  document.write(`<br>`);
 }
 
-//
-function efficiency(distance, fuelUsed) {
-  return distance / fuelUsed;
+function calculateEfficiency(distanceTraveled, totalFuelUsed) {
+  return (distanceTraveled / totalFuelUsed);
 }
 
-const tankCapacity = 40;
-const gasolineAsFuel = 40;
-const distanceGasoline = 480;
-const alcoholAsFuel = 40;
-const distanceAlcohol = 300;
+const totalCapacityOfTank = 40;
+const fullTankWithGasoline = 40;
+const distanceTraveledUsingGasoline = 480;
+const fullTankWithAlcohol = 40;
+const distanceTraveledUsingAlcohol = 300;
 
-let efficiencyUsingGasoline = efficiency(distanceGasoline, gasolineAsFuel);
-let efficiencyUsingAlcohol = efficiency(distanceAlcohol, alcoholAsFuel);
+let efficiencyUsingGasoline = calculateEfficiency(distanceTraveledUsingGasoline, fullTankWithGasoline);
+let efficiencyUsingAlcohol = calculateEfficiency(distanceTraveledUsingAlcohol, fullTankWithAlcohol);
 
 //INFO ON SCREEN
-print(`<h2>Ejercicio Eficiencia Combustible</h2>`);
-print(`La eficiencia del vehiculo usando Gasolina como combustible es de: ${efficiencyUsingGasoline}Km/L`);
-print(`La eficiencia del vehiculo usando Alcohol como combustible es de: ${efficiencyUsingAlcohol}Km/L`);
-
+print(`<h2>Calculo de Eficiencia</h2>`);
+print(`La eficiencia del motor usando <strong>Gasolina</strong> fue de: ${efficiencyUsingGasoline}Km/L`);
+print(`La eficiencia del motor usando <strong>Alcohol</strong> fue de: ${efficiencyUsingAlcohol}Km/L`);
 

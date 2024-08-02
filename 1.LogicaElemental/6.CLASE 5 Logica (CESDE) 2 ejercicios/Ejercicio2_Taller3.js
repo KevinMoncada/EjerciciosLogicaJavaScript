@@ -14,56 +14,51 @@ function lineBreak() {
     document.write("<br>");
     document.write("<br>");
 }
+
+function CalculateNetSalary(grossSalary, bon, deductions) {
+    return (grossSalary + bon + - deductions);
+}
 //
 
-function calculateNetSalary(grossSalary, bonus, deductions) {
-    return (grossSalary + bonus - deductions)
-}
+const workerOneName = prompt(`Nombre del trabajador`);
+const workerOneGrossSalary = parseFloat(prompt(`Salario Bruto establecido en el contrato`));
+const workerOneBonus = parseFloat(prompt(`Valor de las bonificaciones`));
+const workerOneDeductions = parseFloat(prompt(`Valor de las deducciones`));
+let workerOneNetSalary = CalculateNetSalary(workerOneGrossSalary, workerOneBonus, workerOneDeductions);
 
-let higherSalary;
-let higherSalaryWorkerName;
+const workerTwoName = prompt(`Nombre del trabajador`);
+const workerTwoGrossSalary = parseFloat(prompt(`Salario Bruto establecido en el contrato`));
+const workerTwoBonus = parseFloat(prompt(`Valor de las bonificaciones`));
+const workerTwoDeductions = parseFloat(prompt(`Valor de las deducciones`));
+let workerTwoNetSalary = CalculateNetSalary(workerTwoGrossSalary, workerTwoBonus, workerTwoDeductions);
 
-//Recolecta de datos trabajadores
-const firstWorkerName = prompt(`Ingrese su nombre`);
-const firstWorkerGrossSalary = parseFloat(prompt(`${firstWorkerName} Ingrese el valor de su salario Bruto`));
-const firstWorkerBonus = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`));
-const firstWorkerDeductions = parseFloat(prompt(`Ingrese el valor de sus Deducciones`));
-
-const secondWorkerName = prompt(`Ingrese su nombre`);
-const secondWorkerGrossSalary = parseFloat(prompt(`${secondWorkerName} Ingrese el valor de su salario Bruto`));
-const secondWorkerBonus = parseFloat(prompt(`Ingrese el valor de sus Bonificaciones`));
-const secondWorkerDeductions = parseFloat(prompt(`Ingrese el valor de sus Deducciones`));
-
-//Calculos
-const firstWorkerNetSalary = calculateNetSalary(firstWorkerGrossSalary, firstWorkerBonus, firstWorkerDeductions);
-const secondWorkerNetSalary = calculateNetSalary(secondWorkerGrossSalary, secondWorkerBonus, secondWorkerDeductions);
-
-if (firstWorkerNetSalary > secondWorkerNetSalary) {
-    higherSalary = firstWorkerNetSalary;
-    higherSalaryWorkerName = firstWorkerName;
+//HighestNetSalary
+let highestNetSalary;
+let highestPaidWorker;
+if (workerOneNetSalary > workerTwoNetSalary) {
+    highestNetSalary = workerOneNetSalary;
+    highestPaidWorker = workerOneName;
 } else {
-    higherSalary = secondWorkerNetSalary;
-    higherSalaryWorkerName = secondWorkerName;
+    highestNetSalary = workerTwoNetSalary;
+    highestPaidWorker = workerTwoName;
 }
 
-//Info on Screen
-print(`<h2>Comparación de salarios</h2>`);
-print(`<strong>Trabajador 1</strong>`);
-print(`Nombre: ${firstWorkerName}`);
-print(`Salario Bruto: ${firstWorkerGrossSalary}$`);
-print(`Bonificaciones: ${firstWorkerBonus}$`);
-print(`Deducciones: ${firstWorkerDeductions}$`);
-print(`<strong>Salario Neto: ${firstWorkerNetSalary}$ </strong>`);
 
+
+//INFO ON SCREEN
+print(`<h2>Salario mas Alto</h2>`);
+print(`<strong>Datos Trabajador 1:</strong>`);
+print(`Nombre: ${workerOneName}`);
+print(`Salario Bruto: ${workerOneGrossSalary}$`);
+print(`Bonificaciones: ${workerOneBonus}$`);
+print(`Deducciones: ${workerOneDeductions}$`);
+print(`Salario Neto: ${workerOneNetSalary}$`);
 lineBreak();
-
-print(`<strong>Trabajador 2</strong>`);
-print(`Nombre: ${secondWorkerName}`);
-print(`Salario Bruto: ${secondWorkerGrossSalary}$`);
-print(`Bonificaciones: ${secondWorkerBonus}$`);
-print(`Deducciones: ${secondWorkerDeductions}$`);
-print(`<strong>Salario Neto: ${secondWorkerNetSalary}$ </strong>`);
-
+print(`<strong>Datos Trabajador 2:</strong>`);
+print(`Nombre: ${workerTwoName}`);
+print(`Salario Bruto: ${workerTwoGrossSalary}$`);
+print(`Bonificaciones: ${workerTwoBonus}$`);
+print(`Deducciones: ${workerTwoDeductions}$`);
+print(`Salario Neto: ${workerTwoNetSalary}$`);
 lineBreak();
-print(`<strong> Salario Neto mas Alto: ${higherSalary}$ </strong> Correspondiente a <strong>${higherSalaryWorkerName}</strong>`);
-
+print(`<strong>Salario neto mas alto: ${highestNetSalary}$, el cual corresponde a ${highestPaidWorker}</strong>`);

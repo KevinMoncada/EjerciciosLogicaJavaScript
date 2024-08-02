@@ -20,15 +20,9 @@ function lineBreak() {
 }
 //
 
-// let yearInWhichThereWasWorldCup = firstYear;
-const firstYear = 1930;
-const limitYear = parseInt(prompt(`Hasta que año desea saber cuando se disputara o disputó una Copa Mundial de Futbol?`));
+const firstYearOfWorldCup = 1930;
+let limitYear = parseInt(prompt(`Hasta que Año desea calcular la fecha de los Mundiales?`));
 
-// while (yearInWhichThereWasWorldCup <= limitYear) {
-//     print(`Hubo Copa Mundial de Futbol en el año: ${yearInWhichThereWasWorldCup}`);
-//     yearInWhichThereWasWorldCup += 4;
-// }
-
-for (let yearInWhichThereWasWorldCup = firstYear; yearInWhichThereWasWorldCup <= limitYear; yearInWhichThereWasWorldCup += 4) {
-    print(`Hubo Copa Mundial de Futbol en el año: ${yearInWhichThereWasWorldCup}`);
+for (let i = firstYearOfWorldCup; i <= limitYear; i += 4) {
+    print(`Se disputo una Copa Mundial de la FIFA en el año: ${i}`)
 }

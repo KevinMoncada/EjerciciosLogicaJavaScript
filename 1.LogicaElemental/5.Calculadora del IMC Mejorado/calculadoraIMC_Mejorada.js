@@ -17,38 +17,37 @@ function print(text) {
 function lineBreak() {
     document.write('</br>');
 }
-//
 
 function calculateIMC(weight, height) {
     return (weight / (height ** 2));
 }
+//
 
 
-const userName = prompt(`Bienvenido!! Cual es su nombre?`);
+const userName = prompt(`Ingrese su nombre`);
 const userWeight = parseFloat(prompt(`Ingrese su peso`));
-const userHeight = parseFloat(prompt(`Ingrese su Altura`));
+const userHeight = parseFloat(prompt(`Ingrese su estatura`));
 const userIMC = calculateIMC(userWeight, userHeight);
-let userIMCCategory;
-
+let userIMCClasification;
 switch (true) {
     case (userIMC < 18.5):
-        userIMCCategory = `Insuficiencia ponderal`;
+        userIMCClasification = "Rango de Insuficiencia Ponderal"
         break;
     case ((userIMC > 18.5) && (userIMC < 24.9)):
-        userIMCCategory = `Intervalo Normal`;
+        userIMCClasification = "Rango Normal"
         break;
-    case (userIMC > 24.9):
-        userIMCCategory = `Sobrepeso`;
+    case (userIMC > 25):
+        userIMCClasification = "Rango de Sobrepeso"
+        break;
+    default:
         break;
 }
 
-
-
 //INFO ON SCREEN
-print(`<h2>Calculadora IMC</h2>`);
-print(`Usuario: ${userName}`);
-print(`Peso del Usuario: ${userWeight}Kg`);
-print(`Altura del Usuario: ${userHeight}cm`);
-print(`IMC del usuario: ${userIMC}`);
-print(`Clasificación según la OMS: ${userIMCCategory}`);
-
+print(`<h2>CALCULADORA IMC</h2>`);
+print(`<strong>Datos del usuario</strong>`);
+print(`Nombre: ${userName}`);
+print(`Peso: ${userWeight}Kg`);
+print(`Altura: ${userHeight}m`);
+print(`IMC del usuario: ${userIMC}Kg/m^2`);
+print(`Clasificación del IMC segun la OMS: ${userIMCClasification}`);
