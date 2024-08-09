@@ -2,10 +2,10 @@
 
 let arrayExample = [23, 92, 83, 54, 76];
 
-
-function getElementByIndx(inputArray, index) {
-    return inputArray[index]
+function getElementByIndex(array, index) {
+    let element = array[index];
+    return (element);
 }
 
-let result = getElementByIndx(arrayExample, 3)
+let result = getElementByIndex(arrayExample, 0)
 console.log(result);

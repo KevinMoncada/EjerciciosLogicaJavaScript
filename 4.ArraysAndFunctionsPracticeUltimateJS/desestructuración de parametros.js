@@ -8,15 +8,12 @@ let configObject = {
 }
 
 
-function configuracionAPI({ url, bucket, port } = { url: 'https://ejemploDefecto.io', }) {
-  return `${url}/${bucket}/${port}`;
+
+
+const APIConfig = function ({ url, bucket, port } = { url: 'https://ejemploPorDefecto.io', bucket: 666, port: 12341 }) {
+  let formattedUrl = `${url}/${bucket}/${port}`
+  return formattedUrl
 }
 
-
-console.log(configuracionAPI(ejemplo))
-
-
-
-
-
-
+let result = APIConfig(configObject)
+console.log(result);

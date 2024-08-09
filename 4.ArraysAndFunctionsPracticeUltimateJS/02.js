@@ -9,19 +9,24 @@ let originalArray = [
   {},
 ]
 
-function elementsClasification(inputArray) {
-  let stringElements = inputArray.filter((element) => (typeof (element) === 'string'));
-  let numberElements = inputArray.filter((element) => (typeof (element) === 'number'));
-  let arrayElements = inputArray.filter((element) => (typeof (element) === 'array'));
-  let objectElements = inputArray.filter((element) => (typeof (element) === 'object'));
-
-  return {
-    strings: stringElements,
-    numbers: numberElements,
-    arrays: arrayElements,
-    objects: objectElements,
+function classifyAccordingToDataType(inputArray) {
+  let strings = [];
+  let numbers = [];
+  let objects = [];
+  for (const element of inputArray) {
+    let dataTypeOfElements = typeof (element);
+    if (dataTypeOfElements == 'string') {
+      strings.push(element);
+    }
+    if (dataTypeOfElements == 'number') {
+      numbers.push(element);
+    }
+    if (dataTypeOfElements == 'object') {
+      objects.push(element);
+    }
   }
+  return ({ strings: strings, numbers: numbers, objects: objects });
 }
 
-let result = elementsClasification(originalArray);
+let result = classifyAccordingToDataType(originalArray);
 console.log(result);

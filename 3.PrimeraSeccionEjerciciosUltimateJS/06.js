@@ -9,9 +9,11 @@ let pairsArray = [
 ];
 
 
-function pairsArrayToObjectArray(inputArray) {
-    return inputArray.map((element) => element[1])
+function toObjectsArray(inputArray) {
+    let objectsArray = inputArray.map((array) => { return array[1] });
+    return objectsArray;
 }
 
+let result = toObjectsArray(pairsArray)
+console.log(result);
 
-console.log(pairsArrayToObjectArray(pairsArray));

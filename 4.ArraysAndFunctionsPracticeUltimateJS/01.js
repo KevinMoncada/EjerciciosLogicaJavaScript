@@ -2,9 +2,10 @@
 
 let listOfNumbers = [23, -25, -3, -1, 33, -8, -123123];
 
-const absNewArray = function (inputArray) {
-  return inputArray.map((element) => Math.abs(element))
+function calculateAbsValues(inputArray) {
+  let absValues = inputArray.map((number) => Math.abs(number));
+  return absValues;
 }
 
-let result = absNewArray(listOfNumbers)
+let result = calculateAbsValues(listOfNumbers);
 console.log(result);

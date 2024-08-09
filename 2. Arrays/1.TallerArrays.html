@@ -106,21 +106,17 @@
     const foodList = ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'];
     const fruitsList = ['banano', 'manzana', 'pera', 'fresas', 'Sandía'];
     const vegetablesList = ['zanahoria', 'cebolla', 'papa', 'Ajo'];
-    let fruitsListClg = [];
-    let vegetablesListClg = [];
 
     let i = 0;
     for (const element of foodList) {
       if (fruitsList.includes(element)) {
-        fruitsListClg.push(` ${element} ${i} `);
+        console.log(`${element} ${i} (Fruta)`);
       }
       if (vegetablesList.includes(element)) {
-        vegetablesListClg.push(` ${element} ${i} `);
+        console.log(`${element} ${i} (Vegetal)`);
       }
-      i++;
+      i += 1;
     }
-    console.log(`Lista de Frutas: ${fruitsListClg}`);
-    console.log(`Lista de Verduras: ${vegetablesListClg}`);
 
 
 

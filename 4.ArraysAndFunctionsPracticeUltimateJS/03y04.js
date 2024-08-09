@@ -8,25 +8,31 @@ const usuarios = [
 ]
 
 
-const getPaidUsers = function (inputArray) {
-  let paidUsers = inputArray.filter((u) => (u.plan !== 'free'));
+function getPaidUsers(inputArray) {
+  let paidUsers = [];
+  inputArray.forEach(element => {
+    if ((element.plan == 'premium') || element.plan == 'gold') {
+      paidUsers.push(element);
+    }
+  });
   return paidUsers;
 }
-let result1 = getPaidUsers(usuarios);
-console.log(result1);
 
-
-const getAmmountOfUsersPerPlan = function (inputArray) {
+function amountOfUsersByPlan(inputArray) {
   let premiumUsers = inputArray.filter((u) => (u.plan === 'premium'));
   let goldUsers = inputArray.filter((u) => (u.plan === 'gold'));
   let freeUsers = inputArray.filter((u) => (u.plan === 'free'));
-
-  return {
-    premiumUsers: premiumUsers,
-    goldUsers: goldUsers,
-    freeUsers: freeUsers,
-  }
+  let clasificationByPlan;
+  clasificationByPlan = { UsuariosFree: freeUsers, UsuariosGold: goldUsers, UsuariosPremium: premiumUsers };
+  return clasificationByPlan;
 }
 
-let result2 = getAmmountOfUsersPerPlan(usuarios);
-console.log(result2);
+
+
+let firstResult = getPaidUsers(usuarios);
+console.log(firstResult);
+
+console.log(` - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - `);
+
+let secondResult = amountOfUsersByPlan(usuarios);
+console.log(secondResult);
