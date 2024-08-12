@@ -1,14 +1,17 @@
 //Crear una clase User que me permita crear objetos con los datos de los usuarios (Nombre y Id)
 
 class User {
-  constructor(name, id) {
-    this.name = name;
+  constructor(nombre, id) {
+    this.nombre = nombre;
     this.id = id;
+  }
+  saludar() {
+    console.log(`Hola ${this.nombre}!!, tu id es: ${this.id}`);
   }
 }
 
-let user1 = new User('Juan', 9821234);
-let user2 = new User('Carlos', 856745);
-let user3 = new User('Ernesto', 4566323);
-
+const user1 = new User('Roberto', 1235546);
+const user2 = new User('Carlos', 90456);
+const user3 = new User('Jorge', 456562);
 console.log(user1, user2, user3);
+user1.saludar();

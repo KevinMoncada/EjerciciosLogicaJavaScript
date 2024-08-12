@@ -5,7 +5,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pruebaIngles</title>
+  <title> DOM Ejercicio 6 </title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
@@ -37,7 +43,7 @@
     </select>
     <br><br>
     <label for="pregunta4">Como se dice navidad en ingles?</label>
-    <select name="pregunta1" id="pregunta4">
+    <select name="pregunta4" id="pregunta4">
       <option value="false">Halloween</option>
       <option value="true">Christmas</option>
       <option value="false">December</option>
@@ -49,7 +55,35 @@
   <p id="resultado"></p>
 
 
-  <script src="ejercicioPruebadeIngles.js"></script>
+  <script>
+    //Evento
+    document.querySelector('#boton').addEventListener('click', calificacion);
+
+    //Función
+    function calificacion() {
+      let respuestasBuenasAcum = 0;
+      let respuestasMalasAcum = 0;
+      let calificacion = '';
+      let respuesta1 = (document.querySelector('#pregunta1').value);
+      let respuesta2 = (document.querySelector('#pregunta2').value);
+      let respuesta3 = (document.querySelector('#pregunta3').value);
+      let respuesta4 = (document.querySelector('#pregunta4').value);
+      let respuestas = [respuesta1, respuesta2, respuesta3, respuesta4];
+
+      respuestas.forEach(respuesta => {
+        (respuesta == "true") ? respuestasBuenasAcum += 1 : respuestasMalasAcum += 1;
+      });
+      (respuestasBuenasAcum >= 2) ? calificacion = 'Aprobado' : calificacion = 'Reprobado';
+
+      document.querySelector('#resultado').textContent = `
+      Respuestas Buenas = ${respuestasBuenasAcum} 
+      Respuestas Malas = ${respuestasMalasAcum}
+      Calificación = ${calificacion}
+      `
+    }
+
+
+  </script>
 </body>
 
 </html>

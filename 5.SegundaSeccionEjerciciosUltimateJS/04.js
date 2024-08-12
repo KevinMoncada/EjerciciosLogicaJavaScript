@@ -8,11 +8,11 @@ let literalObject = {
 }
 
 
-
-function propEvaluation(obj, prop) {
-    let evaluation = obj.hasOwnProperty(prop)
-    return evaluation
+const checksPropertyExistence = function (obj, search) {
+    (Object.keys(obj).includes(search)) ? console.log(true) : console.log(false);
 }
 
-console.log(propEvaluation(literalObject, 'casa'))
-console.log(propEvaluation(literalObject, 'age'))
+checksPropertyExistence(literalObject, 'age')
+checksPropertyExistence(literalObject, 'casa')
+
+

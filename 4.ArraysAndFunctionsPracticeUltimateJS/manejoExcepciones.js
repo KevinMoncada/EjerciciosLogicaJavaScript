@@ -1,22 +1,17 @@
+//Crear una función que permita dividir 2 numeros, debe emplearse manejo de excepciones y validaciones para anticiparse a posibles errores
 
-
-
-
-function division(numerador, denominador) {
-  if (denominador === 0) {
-    throw 'Invalido, el denominador no puede ser 0'
+const divide = function (num, den) {
+  if (den == 0) {
+    throw new Error("Error, no es posible dividir por 0");
   }
-  return (numerador / denominador);
+  return (num / den);
 }
-
 
 let result;
+
 try {
-  result = division(4, 0);
-} catch (caught) {
-  console.log(caught)
+  result = divide(23, 0);
+  console.log(result);
+} catch (error) {
+  console.log(error.message);
 }
-
-
-
-console.log(result)

@@ -5,27 +5,14 @@ let literalObject = {
     age: 25,
     salute: () => { console.log(`Holaa`) },
     login: () => { console.log(`login`) },
-    logout: function (params) {
+    logout: function () {
     }
 }
 
-
-function getMethodsFromObject(object) {
-    let metodos = []
-    for (const key in object) {
-        console.log(`${key}: ${object[key]}`);
-        if (typeof object[key] == 'function') {
-            metodos.push(key)
-        }
+const getMethodsFromObject = function (obj1) {
+    for (const key in obj1) {
+        ((typeof (obj1[key])) == 'function') ? console.log(`La propiedad ${key} es un Metodo`) : console.log(`La propiedad ${key} NO un Metodo`);
     }
-    return metodos;
 }
 
-let result = getMethodsFromObject(literalObject);
-console.log(result);
-
-
-
-
-
-
+getMethodsFromObject(literalObject);

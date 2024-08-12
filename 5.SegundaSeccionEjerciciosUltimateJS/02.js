@@ -3,26 +3,24 @@
 let literalObject1 = { name: 'Juan', id: 2314, location: 'Colombia', };
 let literalObject2 = { name: 'Juan', id: 2314, location: 'Colombia', };
 
+const comparePropertiesAndValues = function (obj1, obj2) {
+  let equalKeysAcum = 0;
+  let equalKeysValueAcum = 0;
 
-
-
-function compareObjects(obj1, obj2) {
-  let ammountOfEqualProps = 0;
-  let ammountOfUnequalProps = 0;
-  for (const prop in obj1) {
-    if (obj1[prop] === obj2[prop]) {
-      ammountOfEqualProps += 1;
-    } else {
-      ammountOfUnequalProps += 1;
+  for (const key in obj1) {
+    //Comparacion de los Nombres de las propiedades
+    for (const key2 in obj2) {
+      (key == key2) ? equalKeysAcum += 1 : null;
     }
-  }
 
-  if (Object.keys(obj1).length === ammountOfEqualProps) {
-    return true;
+    //Comparacion de los valores de las propiedades
+    (obj1[key] === obj2[key]) ? equalKeysValueAcum += 1 : null;
+  }
+  if ((equalKeysAcum == (Object.keys(obj1)).length) && (equalKeysValueAcum == (Object.keys(obj1)).length)) {
+    console.log(true);
   } else {
-    return false;
+    console.log(false);
   }
 }
 
-let result = compareObjects(literalObject1, literalObject2);
-console.log(result);
+comparePropertiesAndValues(literalObject1, literalObject2);
