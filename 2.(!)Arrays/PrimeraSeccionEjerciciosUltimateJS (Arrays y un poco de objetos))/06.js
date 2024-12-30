@@ -7,13 +7,15 @@ let pairsArray = [
     [987, { id: 987, name: 'Carlos' }],
     [764, { id: 764, name: 'Roberto' }],
 ];
+console.log({ pairsArray });
+let pairsArrayCopy = [...pairsArray];
 
-
-function toObjectsArray(inputArray) {
-    let objectsArray = inputArray.map((array) => { return array[1] });
-    return objectsArray;
+function createNewArray(inputArray) {
+    let newArray = [];
+    newArray = inputArray.map((pairElement) => pairElement.slice(1));
+    return newArray;
 }
 
-let result = toObjectsArray(pairsArray)
-console.log(result);
+let result = createNewArray(pairsArrayCopy);
+console.log({ result });
 

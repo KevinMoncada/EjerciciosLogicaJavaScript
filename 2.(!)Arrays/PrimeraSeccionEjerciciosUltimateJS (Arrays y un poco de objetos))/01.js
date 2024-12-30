@@ -3,9 +3,10 @@
 
 let numbersList = [23, 45, 66, 192, 456, 233];
 
+
 function getMaxNumber(inputArray) {
-    return Math.max(...inputArray)
+    let result = Math.max(...inputArray);
+    return result
 }
 
-let result = getMaxNumber(numbersList)
-console.log(result);
+console.log(getMaxNumber(numbersList));

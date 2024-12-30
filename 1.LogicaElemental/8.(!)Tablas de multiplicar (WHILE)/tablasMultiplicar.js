@@ -23,7 +23,7 @@ print(`Multiplo limite: ${limitMultiple}`);
 print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
 
 
-//Usando While
+//Usando ciclo While
 // let i = 0;
 // let result;
 // while (i <= limitMultiple) {
@@ -36,7 +36,7 @@ print(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //   i += 1;
 // }
 
-//Usando For
+//Usando ciclo For
 let result;
 for (let i = 0; i <= limitMultiple; i += 1) {
   //Calculation

@@ -1,4 +1,4 @@
-// crear un array de longitud N y que sus elementos sean de 1 hasta N
+// crear un array de longitud N y que sus elementos sean de 1 hasta N.
 
 let array = [];
 let n = 20;

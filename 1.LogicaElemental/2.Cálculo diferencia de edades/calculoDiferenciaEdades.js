@@ -12,14 +12,20 @@ function lineBreak() {
     document.write("</br>");
 }
 
-function calculateAgeDifference(olderAge, youngerAge) {
-    return (olderAge - youngerAge);
+
+function calculateAgeDifference(olderBrotherAge, youngerBrotherAge) {
+    return (olderBrotherAge - youngerBrotherAge);
 }
 
-const elderBrotherAge = parseInt(prompt(`Ingrese la edad del hermano mayor`));
-const youngerBrotherAge = parseInt(prompt(`Ingrese la edad del hermano menor`));
-let ageDifference = calculateAgeDifference(elderBrotherAge, youngerBrotherAge);
 
-//INFO ON SCREEN
+let olderBrotherAge = prompt(`Ingrese la edad del hermano MAYOR`);
+let youngerBrotherAge = prompt(`Ingrese la edad del hermano MENOR`);
+let ageDifference = calculateAgeDifference(olderBrotherAge, youngerBrotherAge);
+
+
 print(`<h2>Calculo diferencia de edades</h2>`);
-print(`Nuestra deiferencia de edad es de <strong>${ageDifference} Años</strong>`);
+print(`Edad hermano MAYOR: ${olderBrotherAge} Años`);
+print(`Edad hermano MENOR: ${youngerBrotherAge} Años`);
+lineBreak();
+print(`La diferencia de edad entre los hermanos es de: ${ageDifference} Años`)
+

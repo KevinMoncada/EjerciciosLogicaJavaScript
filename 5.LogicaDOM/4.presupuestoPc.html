@@ -1,0 +1,70 @@
+<!-- Crear un algoritmo que le permita al usuario calcular el presupuesto de un PC armado por componentes (Disco, Monitor, Procesador), el usuario debe de poder elegir varios modelos de cada componente -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> DOM Ejercicio 4 </title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Presupuesto PC</h3>
+
+  <form action="">
+    <div>
+      <label for="monitor">Monitores disponibles</label>
+      <select name="monitor" id="monitor">
+        <option value="1500000"> LG 4K 300fps</option>
+        <option value="1000000"> Samsung 1080p 2k</option>
+        <option value="800000"> Asus 1080p</option>
+      </select>
+    </div>
+    <br> <br>
+    <div>
+      <label for="disco">Unidades de Almacenamiento Disponibles</label>
+      <select name="disco" id="disco">
+        <option value="400000"> NV.2 1TB</option>
+        <option value="300000"> SDD 1TB</option>
+        <option value="160000"> HDD 1TB</option>
+      </select>
+    </div>
+    <br> <br>
+    <div>
+      <label for="core">Procesadores disponibles</label>
+      <select name="core" id="core">
+        <option value="1400000"> I9 13300k</option>
+        <option value="1100000"> i7 10200</option>
+        <option value="900000"> i5 12350</option>
+      </select>
+    </div>
+    <br> <br>
+    <button type="button" id="button"> Calcular Monto total</button>
+  </form>
+  <h3>Calculo presupuesto</h3>
+  <p id="calculation"></p>
+
+
+
+  <script>
+    document.querySelector('#button').addEventListener('click', performTheCalculation)
+
+    function performTheCalculation() {
+      let monitorCost = parseFloat(document.querySelector('#monitor').value);
+      let discoCost = parseFloat(document.querySelector('#disco').value);
+      let coreCost = parseFloat(document.querySelector('#core').value);
+      let costsOfSelectedComponents = (monitorCost + discoCost + coreCost);
+
+      document.querySelector('#calculation').innerHTML = `El presupuesto segun los componentes seleccionados es de: ${costsOfSelectedComponents}$`
+    }
+  </script>
+</body>
+
+</html>

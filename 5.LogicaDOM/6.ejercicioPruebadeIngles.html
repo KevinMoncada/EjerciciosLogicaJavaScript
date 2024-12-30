@@ -1,0 +1,89 @@
+<!-- Crear una Prueba de Ingles de seleccion multiple, que tenga 4 preguntas y al final le diga al usuario cuantas saco buenas y cuantas malas -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> DOM Ejercicio 6 </title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Prueba de Ingles</h2>
+  <h2>preguntas</h2>
+  <form action="">
+    <label for="pregunta1">Como se dice rojo en Ingles?</label>
+    <select name="pregunta1" id="pregunta1">
+      <option value="true">Red</option>
+      <option value="false">Blue</option>
+      <option value="false">Yellow</option>
+      <option value="false">Black</option>
+    </select>
+    <br><br>
+    <label for="pregunta2">Que significa Cousin?</label>
+    <select name="pregunta2" id="pregunta2">
+      <option value="false">Cuñado</option>
+      <option value="false">Hijo</option>
+      <option value="true">Primo</option>
+      <option value="false">Abuelo</option>
+    </select>
+    <br><br>
+    <label for="pregunta3">Como se dice cielo en ingles?</label>
+    <select name="pregunta3" id="pregunta3">
+      <option value="false">Hell</option>
+      <option value="false">Earth</option>
+      <option value="false">Rain</option>
+      <option value="true">Sky</option>
+    </select>
+    <br><br>
+    <label for="pregunta4">Como se dice navidad en ingles?</label>
+    <select name="pregunta4" id="pregunta4">
+      <option value="false">Halloween</option>
+      <option value="true">Christmas</option>
+      <option value="false">December</option>
+      <option value="false">Season</option>
+    </select>
+    <br><br>
+    <button type="button" id="boton">Revisar</button>
+  </form>
+  <p id="resultado"></p>
+
+
+  <script>
+    //Evento
+    document.querySelector('#boton').addEventListener('click', calificacion);
+
+    //Función
+    function calificacion() {
+      let respuestasBuenasAcum = 0;
+      let respuestasMalasAcum = 0;
+      let calificacion = '';
+      let respuesta1 = (document.querySelector('#pregunta1').value);
+      let respuesta2 = (document.querySelector('#pregunta2').value);
+      let respuesta3 = (document.querySelector('#pregunta3').value);
+      let respuesta4 = (document.querySelector('#pregunta4').value);
+      let respuestas = [respuesta1, respuesta2, respuesta3, respuesta4];
+
+      respuestas.forEach(respuesta => {
+        (respuesta == "true") ? respuestasBuenasAcum += 1 : respuestasMalasAcum += 1;
+      });
+      (respuestasBuenasAcum >= 2) ? calificacion = 'Aprobado' : calificacion = 'Reprobado';
+
+      document.querySelector('#resultado').textContent = `
+      Respuestas Buenas = ${respuestasBuenasAcum} 
+      Respuestas Malas = ${respuestasMalasAcum}
+      Calificación = ${calificacion}
+      `
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -7,32 +7,33 @@ Por otro lado, si el carro usa alcohol como combustible, el mismo tanque de 40 l
  */
 
 
-//WORKFLOW FUNCTION'S
-function print(text) {
-  document.write(text);
-  document.write(`<br>`);
+//WORKFLOW-FUNCTIONS
+function print(textOnScreen) {
+  document.write(textOnScreen);
+  document.write("</br>");
 }
 
 function lineBreak() {
-  document.write(`<br>`);
-  document.write(`<br>`);
+  document.write("</br>");
+  document.write("</br>");
 }
 
-function calculateEfficiency(distanceTraveled, totalFuelUsed) {
-  return (distanceTraveled / totalFuelUsed);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+function calculateEfficiency(distanceTraveled, fuelUsed) {
+  return (distanceTraveled / fuelUsed);
 }
 
-const totalCapacityOfTank = 40;
-const fullTankWithGasoline = 40;
-const distanceTraveledUsingGasoline = 480;
-const fullTankWithAlcohol = 40;
-const distanceTraveledUsingAlcohol = 300;
+const tankCapacity = 40;
+const tankFullGasoline = 40;
+const tankFullAlcohol = 40;
+const distanceTraveledGasoline = 480;
+const distanceTraveledAlcohol = 300;
 
-let efficiencyUsingGasoline = calculateEfficiency(distanceTraveledUsingGasoline, fullTankWithGasoline);
-let efficiencyUsingAlcohol = calculateEfficiency(distanceTraveledUsingAlcohol, fullTankWithAlcohol);
+let efficiencyWithGasoline = calculateEfficiency(distanceTraveledGasoline, tankFullGasoline);
+let efficiencyWithAlcohol = calculateEfficiency(distanceTraveledAlcohol, tankFullAlcohol);
 
 //INFO ON SCREEN
 print(`<h2>Calculo de Eficiencia</h2>`);
-print(`La eficiencia del motor usando <strong>Gasolina</strong> fue de: ${efficiencyUsingGasoline}Km/L`);
-print(`La eficiencia del motor usando <strong>Alcohol</strong> fue de: ${efficiencyUsingAlcohol}Km/L`);
-
+print(`Eficiencia usando <strong>GASOLINA</strong> como combuistible: ${efficiencyWithGasoline} Km/L`);
+print(`Eficiencia usando <strong>ALCOHOL</strong> como combuistible: ${efficiencyWithAlcohol} Km/L`);

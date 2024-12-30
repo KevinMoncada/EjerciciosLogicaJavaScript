@@ -3,10 +3,9 @@
 let arrayExample = [234, -22, 98, 12, 0, -34, 65, -5, 45, 88]
 
 function getMaxAndMinNumbers(inputArray) {
-    let maxNumber = Math.max(...inputArray);
-    let minNumber = Math.min(...inputArray);
-    // return (`Número mayor: ${maxNumber}, Número menor: ${minNumber}`);
-    return ({ maxNumber, minNumber })
+    let maxValue = Math.max(...inputArray);
+    let minValue = Math.min(...inputArray);
+    return { maxValue, minValue }
 }
 
 let result = getMaxAndMinNumbers(arrayExample);
