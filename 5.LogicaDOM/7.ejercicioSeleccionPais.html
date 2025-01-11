@@ -1,4 +1,4 @@
-<!-- CREAR UN ALGORITMO QUE LE PERMITA AL USUARIO ELEGIR UN PAIS Y SEGUN SEA SU SELECCION PUEDA ELIGIR A CONTINUACION ALGUNA DE LAS CIUDAD DE DICHO PAIS 
+<!-- CREAR UN ALGORITMO QUE LE PERMITA AL USUARIO ELEGIR UN PAIS Y SEGUN SEA SU SELECCION PUEDA ELIGIR A CONTINUACION ALGUNA DE LAS CIUDADES DE DICHO PAIS 
       Paises: Mexico, Colombia, Argentina, Uruguay
 
 
@@ -16,7 +16,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> DOM Ejercicio 7 </title>
+  <title>Ejercicio 7</title>
   <style>
     body {
       background-color: #282c34;
@@ -27,61 +27,63 @@
 
 <body>
   <form action="">
-    <label for="countriesList">Seleccione un País</label>
-    <select name="countriesList" id="countriesList">
-      <option value="-"> - - - - - - - - - - - - </option>
-      <option value="Mexico">Mexico</option>
-      <option value="Colombia">Colombia</option>
-      <option value="Argentina">Argentina</option>
-      <option value="Uruguay">Uruguay</option>
+    <label for="country"> Seleccione un pais</label>
+    <select name="country" id="country">
+      <option value=" - - - - - - - - -"> - - - - - - - - -</option>
+      <option value="Mexico"> Mexico </option>
+      <option value="Colombia"> Colombia </option>
+      <option value="Argentina"> Argentina </option>
+      <option value="Uruguay"> Uruguay </option>
     </select>
-    <label for="citiesList">Seleccione una Ciudad</label>
-    <select name="citiesList" id="citiesList">
-      <option value="-"> - - - - - - - - - - - </option>
+    <label for="cities"> Seleccione una Ciudad</label>
+    <select name="cities" id="cities">
+      <option value=" - - - - - - - - -"> - - - - - - - - -</option>
     </select>
   </form>
 
 
   <script>
-    //Evento
-    document.querySelector('#countriesList').addEventListener('change', showCities);
+    document.getElementById('country').addEventListener('change', (event) => {
+      let selectedCountry = (document.getElementById('country').value);
+      let citiesSelectNode = (document.getElementById('cities'));
+      citiesSelectNode.innerHTML = ``;
+      let citiesToShow = [];
+      console.log(selectedCountry);
 
-
-    function showCities() {
-      let citiesListSelect = document.querySelector('#citiesList');
-      citiesListSelect.innerHTML = ' - - - - - - - - - - - '
       const mexicanCities = ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Cancún', 'Tijuana', 'Mérida', 'San Luis Potosí'];
       const colombianCities = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Santa Marta'];
       const argentinianCities = ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata', 'San Miguel de Tucumán', 'Mar del Plata', 'Salta'];
       const uruguayanCities = ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'];
 
-      const selectedCountry = (document.querySelector('#countriesList').value);
-      let citiesToShow = [];
-
       switch (selectedCountry) {
-        case "Mexico":
+        case 'Mexico':
           citiesToShow = mexicanCities;
           break;
-        case "Colombia":
+        case 'Colombia':
           citiesToShow = colombianCities;
           break;
-        case "Argentina":
+        case 'Argentina':
           citiesToShow = argentinianCities;
           break;
-        case "Uruguay":
+        case 'Uruguay':
           citiesToShow = uruguayanCities;
+          break;
+        default:
+
           break;
       }
 
-      let newOptionElement;
-      for (let i = 0; i < citiesToShow.length; i++) {
-        newOptionElement = document.createElement('option');
-        newOptionElement.textContent = citiesToShow[i];
-        newOptionElement.value = citiesToShow[i];
-        citiesListSelect.appendChild(newOptionElement)
+      let newElement;
+      for (const city of citiesToShow) {
+        newElement = document.createElement('option');
+        newElement.innerText = `${city}`;
+        newElement.value = `${city}`;
+        citiesSelectNode.appendChild(newElement);
       }
-    }
+    })
+
   </script>
+
 
 
 

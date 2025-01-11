@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> DOM Ejercicio 4 </title>
+  <title>Ejercicio 4</title>
   <style>
     body {
       background-color: #282c34;
@@ -16,54 +16,55 @@
 </head>
 
 <body>
-  <h3>Presupuesto PC</h3>
 
   <form action="">
-    <div>
+    <div class="monitor">
       <label for="monitor">Monitores disponibles</label>
       <select name="monitor" id="monitor">
-        <option value="1500000"> LG 4K 300fps</option>
-        <option value="1000000"> Samsung 1080p 2k</option>
-        <option value="800000"> Asus 1080p</option>
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="500000">LG 1080p</option>
+        <option value="1000000">HP 2K</option>
+        <option value="1500000">Acer 4K</option>
       </select>
     </div>
-    <br> <br>
-    <div>
-      <label for="disco">Unidades de Almacenamiento Disponibles</label>
-      <select name="disco" id="disco">
-        <option value="400000"> NV.2 1TB</option>
-        <option value="300000"> SDD 1TB</option>
-        <option value="160000"> HDD 1TB</option>
-      </select>
-    </div>
-    <br> <br>
-    <div>
-      <label for="core">Procesadores disponibles</label>
-      <select name="core" id="core">
-        <option value="1400000"> I9 13300k</option>
-        <option value="1100000"> i7 10200</option>
-        <option value="900000"> i5 12350</option>
-      </select>
-    </div>
-    <br> <br>
-    <button type="button" id="button"> Calcular Monto total</button>
-  </form>
-  <h3>Calculo presupuesto</h3>
-  <p id="calculation"></p>
 
+    <div class="storage">
+      <label for="storage">Unidades de Almacenamiento disponibles</label>
+      <select name="storage" id="storage">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="200000">HDD 2TB</option>
+        <option value="600000">SSD 2TB</option>
+        <option value="1200000">nvme m.2 2TB</option>
+      </select>
+    </div>
+
+    <div class="cpu">
+      <label for="cpu">CPU Disponibles</label>
+      <select name="cpu" id="cpu">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="600000">i5 12400</option>
+        <option value="1000000">i7 14400</option>
+        <option value="1200000">i9 14200</option>
+      </select>
+    </div>
+
+    <button type="button" id="button">Calcular presupuesto</button>
+  </form>
+  <p id="output"></p>
 
 
   <script>
-    document.querySelector('#button').addEventListener('click', performTheCalculation)
+    document.getElementById('button').addEventListener('click', () => {
+      let monitorChoice = parseFloat(document.getElementById('monitor').value);
+      let storgaeChoice = parseFloat(document.getElementById('storage').value);
+      let cpuChoice = parseFloat(document.getElementById('cpu').value);
+      let output = document.getElementById('output');
 
-    function performTheCalculation() {
-      let monitorCost = parseFloat(document.querySelector('#monitor').value);
-      let discoCost = parseFloat(document.querySelector('#disco').value);
-      let coreCost = parseFloat(document.querySelector('#core').value);
-      let costsOfSelectedComponents = (monitorCost + discoCost + coreCost);
+      let calculation = (monitorChoice + storgaeChoice + cpuChoice);
 
-      document.querySelector('#calculation').innerHTML = `El presupuesto segun los componentes seleccionados es de: ${costsOfSelectedComponents}$`
-    }
+      output.textContent = `${calculation}$`
+    })
+
   </script>
 </body>
 

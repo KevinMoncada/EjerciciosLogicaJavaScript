@@ -1,11 +1,12 @@
 <!-- CREAR UN PROGRAMA QUE LE PERMITA AL USUARIO SABER SI UN NUMERO ES PAR O NO -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> DOM Ejercicio 2</title>
+  <title>Ejercicio 2</title>
   <style>
     body {
       background-color: #282c34;
@@ -16,30 +17,25 @@
 
 <body>
   <form action="">
-    <label for="numberEntered">Ingrese un numero para determinar si es par o no</label>
-    <br> <br>
-    <input type="text" id="numberEntered">
+    <label for="number">Ingrese un número</label>
+    <input type="text" id="number">
+    <br>
     <button type="button" id="button">Sera par?</button>
-    <br> <br>
   </form>
-  <p id="result"></p>
-
+  <p id="outputReceptor"></p>
 
 
 
 
   <script>
-    document.querySelector('#button').addEventListener('click', seraPar);
+    document.getElementById('button').addEventListener('click', () => {
+      let number = parseInt(document.getElementById('number').value);
+      let result;
+      (number % 2 === 0) ? result = `El numero ingresado (${number}) SI es par` : result = `El numero ingresado (${number}) NO es par`
 
-    function seraPar() {
-      const numberEntered = parseFloat(document.querySelector('#numberEntered').value);
-
-      if (numberEntered % 2 === 0) {
-        document.querySelector('#result').textContent = `El número ingresado es PAR`;
-      } else {
-        document.querySelector('#result').textContent = `El número ingresado NO es PAR`;
-      }
-    }
+      let output = document.getElementById('outputReceptor')
+      output.textContent = result;
+    })
 
   </script>
 </body>
